@@ -216,3 +216,10 @@ async def topup_handler(client: Client, msg: types.Message):
     pesan += f'<b>CATATAN:</b> apabila batas kirim harian belum habis. coin tidak akan berkurang'
  
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
+
+async def lihat_handler(client: Helper, id_bot: int):
+    db = Database(client.user_id)
+    bot = db.get_data_bot(id_bot)
+    pesan ="{link}"
+    
+    await client.message.reply_text(pesan, True, enums.ParseMode.HTML)
