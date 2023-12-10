@@ -99,6 +99,10 @@ class Helper():
         await self.bot.send_message(config.channel_log, pesan, enums.ParseMode.HTML, disable_web_page_preview=True)
 
     async def lihat_pesan(self, type: str = None, link: str = None):
+    if type == 'cek_pesan':
+            pesan = "{link}"
+await self.bot.send_message(config.channel_log, pesan, enums.ParseMode.HTML, disable_web_page_preview=True)
+
 
     def formatrupiah(self, uang):
         y = str(uang)
