@@ -233,14 +233,19 @@ async def cb_test(client: Client, msg: types.Message):
         [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)    
-    pesan = ' <b>silahkan kirim pesan anda menggunakan hashtag:</b>\n\n'
-    pesan += f'• <code>#mba</code> [ untuk identitas perempuan]\n'
-    pesan += f'• <code>#mas</code> [ untuk identitas laki-laki ]\n'
-    pesan += f'• <code>#spill</code> [ untuk spill masalah ]\n'
-    pesan += f'• <code>#tanya</code> [ untuk bertanya ]\n'
-    pesan += f'• <code>#story</code> [ untuk berbagi cerita/curhat ]\n'
-    pesan += f'• <code>#pap</code> [ khusus media foto/video ]\n\n'
-    pesan += f'<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk {username}</code>\n\n'
-    pesan += f'<b>Pastikan lebih dari 3 kata</b>'
 
-    await callbackquery(pesan, True, enums.ParseMode.HTML, reply_markup==reply_markup)
+await msg.reply_text(
+        text=config.start_msg.format(
+            id=msg.from_user.id,
+            mention=mention,
+            username=username,
+            first_name=await helper.escapeHTML(first),
+            last_name=await helper.escapeHTML(last),
+            fullname=await helper.escapeHTML(fullname),
+        ),
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(keyboard),
+        quote=True
+    )
+
+    
