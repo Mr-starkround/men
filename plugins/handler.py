@@ -206,7 +206,7 @@ async def on_callback_query(client: Client, query: CallbackQuery):
     elif query.data == 'tpp':
         await cb_topup(client, query)
     elif query.data == 'nsj':
-        await cb_help(client, query)
+        await topup_handler(client, query)
     elif query.data == 'ttp':
         await cb_close(client, query)
     elif query.data == 'voice':
