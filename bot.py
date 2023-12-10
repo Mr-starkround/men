@@ -40,7 +40,7 @@ class Bot(Client):
                 sys.exit()
         if config.channel_2:
             try:
-                await self.export_chat_invite_link(config.channel_1)
+                await self.export_chat_invite_link(config.channel_2)
             except:
                 print(f'Harap periksa kembali ID [ {config.channel_2} ] pada channel 2')
                 print('Pastikan bot telah dimasukan kedalam channel dan menjadi admin')
