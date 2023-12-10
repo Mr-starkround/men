@@ -222,4 +222,4 @@ async def lihat_handler(client: Helper, id_bot: int):
     bot = db.get_data_bot(id_bot)
     pesan ="{link}"
     
-    await (pesan, True, enums.ParseMode.HTML)
+        await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
