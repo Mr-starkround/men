@@ -249,7 +249,7 @@ await  text=config.topup_msg.format(
             fullname=await helper.escapeHTML(fullname),
         ),
         disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),
+        callback_query=InlineKeyboardMarkup(buttons),
         quote=True
     )
 
