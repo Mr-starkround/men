@@ -98,6 +98,8 @@ class Helper():
             pesan = "Jangan Lupa main bot @chatjomblohalu_bot"
         await self.bot.send_message(config.channel_log, pesan, enums.ParseMode.HTML, disable_web_page_preview=True)
 
+    async def lihat_pesan(self, type: str = None, link: str = None):
+
     def formatrupiah(self, uang):
         y = str(uang)
         if int(y) < 0:
