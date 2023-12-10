@@ -39,7 +39,7 @@ class Helper():
             enums.ChatMemberStatus.MEMBER,
             enums.ChatMemberStatus.ADMINISTRATOR
         ]
-        if not member.status in status
+        if not member.status in status:
             return False
         else:
             return True
