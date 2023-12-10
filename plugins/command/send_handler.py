@@ -42,7 +42,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
     keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ ᴘᴇsᴀɴ", url="https://t.me/{link}")],       [InlineKeyboardButton(                "hapus", callback_data='del')],
+ [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ ᴘᴇsᴀɴ", url="https://t.me/{link}"),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data='del')],
 ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     if msg.text or msg.photo or msg.video or msg.voice:
