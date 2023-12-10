@@ -76,12 +76,6 @@ class Helper():
         }
         return await database.tambah_pelanggan(data)
 
-    async def lihat_pesan(self, type: str = None, link: str = None):
-    if type == 'cek_pesan':
-            pesan = "{link}"
-await self.bot.send_message(config.channel_log, pesan, enums.ParseMode.HTML, disable_web_page_preview=True)
-
-
     async def send_to_channel_log(self, type: str = None, link: str = None):
         if type == 'log_channel':
             pesan = "INFO MESSAGE 💌\n"
