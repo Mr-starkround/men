@@ -1,4 +1,4 @@
-import config
+oimport config
 import asyncio
 from PIL import Image, ImageFont, ImageDraw
 from io import BytesIO 
@@ -218,34 +218,3 @@ async def topup_handler(client: Client, msg: types.Message):
  
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
-async def cb_test(client: Client, msg: types.Message):
-    helper = Helper(client, msg)
-    first = msg.from_user.first_name
-    last = msg.from_user.last_name
-    fullname = f'{first} {last}' if last else first
-    username = (
-        f'@{msg.from_user.username}'
-        if msg.from_user.username
-        else '@vxnjul'
-    )
-    mention = msg.from_user.mention
-    keyboard = [
-        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)    
-
-await msg.reply_text(
-        text=config.start_msg.format(
-            id=msg.from_user.id,
-            mention=mention,
-            username=username,
-            first_name=await helper.escapeHTML(first),
-            last_name=await helper.escapeHTML(last),
-            fullname=await helper.escapeHTML(fullname),
-        ),
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(keyboard),
-        quote=True
-    )
-
-    
