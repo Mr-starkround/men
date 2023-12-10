@@ -217,9 +217,10 @@ async def topup_handler(client: Client, msg: types.Message):
  
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
-async def lihat_handler(client: Helper, id_bot: int):
-    db = Database(client.user_id)
-    bot = db.get_data_bot(id_bot)
-    pesan ="{link}"
+async def lihat_handler(client: Client, msg: types.Message):
+    helper = Helper(client, msg)
+    db = Database(msg.from_user.id)
+    db_user = db.get_data_pelanggan()
+    db_bot = db.get_data_bot(client.id_bot).kirimchannel
     
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
