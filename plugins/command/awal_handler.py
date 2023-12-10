@@ -243,4 +243,4 @@ async def cb_test(client: Client, msg: types.Message):
     pesan += f'<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk {username}</code>\n\n'
     pesan += f'<b>Pastikan lebih dari 3 kata</b>'
 
-    await (pesan, True, enums.ParseMode.HTML, reply_markup=reply_markup)
+    await (pesan, True, enums.ParseMode.HTML, reply_markup==reply_markup)
