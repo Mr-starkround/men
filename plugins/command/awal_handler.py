@@ -220,4 +220,4 @@ async def topup_handler(client: Client, msg: types.Message):
     async def lihat_pesan(self, type: str = None, link: str = None):
         if type == 'lihatpesan':
             pesan = "{link}"
-     self.bot.send_message(config.channel_1, pesan, enums.ParseMode.HTML, disable_web_page_preview=True)
+    await self.bot.send_message(config.channel_1, pesan, enums.ParseMode.HTML, disable_web_page_preview=True)
