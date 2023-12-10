@@ -45,6 +45,12 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
+
+keyboard = [
+ [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/'{link + str(kirim.id)}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
+]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+ 
     
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
@@ -61,12 +67,6 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         all_menfess = db_user.all_menfess
         coin = db_user.coin
         if menfess >= config.batas_kirim:
-
-keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/'{link + str(kirim.id)}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
-]
-    reply_markup = InlineKeyboardMarkup(keyboard)
- 
             if db_user.status == 'member' or db_user.status == 'talent':
                 if coin >= config.biaya_kirim:
                     coin = db_user.coin - config.biaya_kirim
