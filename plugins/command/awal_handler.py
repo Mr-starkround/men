@@ -155,7 +155,8 @@ async def cb_help(client, callback_query):
 <b>Pastikan lebih dari 3 kata</b>
 """,
         disable_web_page_preview=True,
-   enums.ParseMode.HTML,     reply_markup=InlineKeyboardMarkup(buttons))
+     reply_markup=InlineKeyboardMarkup(buttons),
+)
 
 
 async def cb_close(client, callback_query):
