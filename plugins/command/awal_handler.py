@@ -239,5 +239,7 @@ async def test_handler(client: Client, msg: types.Message):
             fullname=await helper.escapeHTML(fullname),
         ),
         disable_web_page_preview=True,
+        quote=True   
+       reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
