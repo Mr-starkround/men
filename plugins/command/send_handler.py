@@ -5,6 +5,10 @@ from pyrogram import Client, types, enums
 from plugins import Database, Helper
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+async def get_link():
+    anu = str(config.channel_1).split('-100')[1]
+    return f"https://t.me/c/{anu}/"
+
 async def send_with_pic_handler(client: Client, msg: types.Message, key: str, hastag: list):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
@@ -73,10 +77,6 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
     else:
         await msg.reply('media yang didukung photo, video dan voice')
-
-async def get_link():
-    anu = str(config.channel_1).split('-100')[1]
-    return f"https://t.me/c/{anu}/"
 
 async def transfer_coin_handler(client: Client, msg: types.Message):
     if re.search(r"^[\/]tf_coin(\s|\n)*$", msg.text or msg.caption):
