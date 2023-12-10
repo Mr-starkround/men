@@ -218,3 +218,6 @@ async def topup_handler(client: Client, msg: types.Message):
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
     async def lihat_pesan(self, type: str = None, link: str = None):
+
+    await callback_query.edit_message_text(
+        f""" {link}""")
