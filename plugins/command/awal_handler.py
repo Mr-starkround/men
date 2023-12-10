@@ -240,7 +240,7 @@ async def test_handler(client: Client, msg: types.Message):
         ],
     ]
 
-await  text = config.topup_msg.format(
+await  (config.topup_msg.format(
             id=msg.from_user.id,
             mention=mention,
             username=username,
