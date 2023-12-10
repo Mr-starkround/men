@@ -204,9 +204,9 @@ async def on_callback_query(client: Client, query: CallbackQuery):
     elif query.data == 'lihat':
         await send_menfess_handler(client, query)
     elif query.data == 'tpp':
-        await cb_topup(client, query)
+        await start_handler(client, query)
     elif query.data == 'nsj':
-        await cb_test(client, query)
+        await cb_help(client, query)
     elif query.data == 'ttp':
         await cb_close(client, query)
     elif query.data == 'voice':
