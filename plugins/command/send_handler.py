@@ -64,6 +64,12 @@ async def send_menfess_handler(client: Client, msg: types.Message):
             if db_user.status == 'member' or db_user.status == 'talent':
                 if coin >= config.biaya_kirim:
                     coin = db_user.coin - config.biaya_kirim
+
+keyboard = [
+ [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/'{link + str(kirim.id)}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
+]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+ 
                 else:
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
@@ -74,12 +80,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
     else:
         await msg.reply('media yang didukung photo, video dan voice')
-     reply_markup = InlineKeyboardMarkup(keyboard)
-[
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/'{link + str(kirim.id)}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
-],
     
- 
 async def transfer_coin_handler(client: Client, msg: types.Message):
     if re.search(r"^[\/]tf_coin(\s|\n)*$", msg.text or msg.caption):
         err = "<i>perintah salah /tf_coin [jmlh_coin]</i>" if msg.reply_to_message else "<i>perintah salah /tf_coin [id_user] [jmlh_coin]</i>"
