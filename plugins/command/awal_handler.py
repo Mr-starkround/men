@@ -136,7 +136,7 @@ async def cb_help(client, callback_query):
     buttons = [
         [
             InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="ttp"
+                "ᴄʟᴏsᴇ", callback_data="tpp"
             ),
         ],
     ]
@@ -150,7 +150,7 @@ async def cb_help(client, callback_query):
 • <code>#story</code> [ untuk berbagi cerita/curhat ]
 • <code>#pap</code> [ khusus media foto/video ] 
 
-<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk {username}</code>
+<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk</code>
 
 <b>Pastikan lebih dari 3 kata</b>
 """,
