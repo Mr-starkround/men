@@ -230,7 +230,7 @@ async def test_handler(client: Client, msg: types.Message):
     )
     mention = msg.from_user.mention
     await msg.reply_text(
-        text=config.start_msg.format(
+        text=config.topup_msg.format(
             id=msg.from_user.id,
             mention=mention,
             username=username,
