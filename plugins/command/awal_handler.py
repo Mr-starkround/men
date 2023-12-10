@@ -221,9 +221,10 @@ async def topup_handler(client: Client, msg: types.Message):
 async def cb_test(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()    
-keyboard = [      [InlineKeyboardButton(                "close", callback_data="ttp")],
+    keyboard = [
+        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
     ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
+    reply_markup = InlineKeyboardMarkup(keyboard)    
     pesan = ' <b>silahkan kirim pesan anda menggunakan hashtag:</b>\n\n'
     pesan += f'• <code>#mba</code> [ untuk identitas perempuan]\n'
     pesan += f'• <code>#mas</code> [ untuk identitas laki-laki ]\n'
