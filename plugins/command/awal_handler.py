@@ -1,4 +1,4 @@
-oimport config
+import config
 import asyncio
 from PIL import Image, ImageFont, ImageDraw
 from io import BytesIO 
