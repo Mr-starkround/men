@@ -218,7 +218,6 @@ async def topup_handler(client: Client, msg: types.Message):
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
     async def lihat_pesan(self, type: str = None, link: str = None):
-
-    await callback_query.edit_message_text(
-        f""" {link}""")
-        await self.bot.send_message(config.channel_1, quote, enums.ParseMode.HTML, disable_web_page_preview=True)
+        if type == 'lihatpesan':
+            pesan = "{link}"
+     self.bot.send_message(config.channel_1, pesan, enums.ParseMode.HTML, disable_web_page_preview=True)
