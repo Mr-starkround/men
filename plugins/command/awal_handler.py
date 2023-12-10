@@ -220,7 +220,7 @@ keyboard = [
 async def cb_test(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()    
-keyboard = [      [InlineKeyboardButton(                "close", callback_data=ttp")],
+keyboard = [      [InlineKeyboardButton(                "close", callback_data="ttp")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     pesan = ' <b>silahkan kirim pesan anda menggunakan hashtag:</b>\n\n'
