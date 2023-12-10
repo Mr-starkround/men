@@ -200,9 +200,10 @@ async def help_handler(client, msg):
 async def topup_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
-    keyboard = [
+keyboard = [
         [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
     ]
+    
     reply_markup = InlineKeyboardMarkup(keyboard)
     pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess ke @JAWAFES jika batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
     pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>\n\n'
@@ -216,3 +217,20 @@ async def topup_handler(client: Client, msg: types.Message):
  
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
+async def cb_test(client: Client, msg: types.Message):
+    helper = Helper(client, msg)
+    db = Database(msg.from_user.id).get_data_pelanggan()    
+keyboard = [      [InlineKeyboardButton(                "close", callback_data=ttp")],
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    pesan = ' <b>silahkan kirim pesan anda menggunakan hashtag:</b>\n\n'
+    pesan += f'• <code>#mba</code> [ untuk identitas perempuan]\n'
+    pesan += f'• <code>#mas</code> [ untuk identitas laki-laki ]\n'
+    pesan += f'• <code>#spill</code> [ untuk spill masalah ]\n'
+    pesan += f'• <code>#tanya</code> [ untuk bertanya ]\n'
+    pesan += f'• <code>#story</code> [ untuk berbagi cerita/curhat ]\n'
+    pesan += f'• <code>#pap</code> [ khusus media foto/video ]\n\n'
+    pesan += f'<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk {username}</code>\n\n'
+    pesan += f'<b>Pastikan lebih dari 3 kata</b>'
+
+    await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
