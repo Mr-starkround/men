@@ -201,6 +201,8 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await photo_handler_inline(client, query)
     elif query.data == 'video':
         await video_handler_inline(client, query)
+    elif query.data == 'del':
+        await delete_message(client, query)
     elif query.data == 'tpp':
         await cb_topup(client, query)
     elif query.data == 'nsj':
