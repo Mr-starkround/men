@@ -221,3 +221,4 @@ async def topup_handler(client: Client, msg: types.Message):
 
     await callback_query.edit_message_text(
         f""" {link}""")
+        await self.bot.send_message(config.channel_log, pesan, enums.ParseMode.HTML, disable_web_page_preview=True)
