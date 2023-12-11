@@ -233,7 +233,7 @@ async def cb_hapus(client, callback_query):
 ├ <code>/tf_coin 1020381855 25</code>
 ├<code>/tf_coin 5422684990 25</code>
 ├ <code>/tf_coin 1717010997 25</code>
-└<code> /tf_coin 6188825810 25</code>
+└<code>/tf_coin 6188825810 25</code>
 
 <b>Jika sudah, salin bukti transfer coin anda lalu pergi ke button hapus dibawah ini</b>
 """,
