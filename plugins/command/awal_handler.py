@@ -222,9 +222,12 @@ async def cb_hapus(client, callback_query):
     user_id = callback_query.from_user.id
     buttons = [
         [
+        InlineKeyboardButton(
+                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupupcoinbot?start=start"
+ ),
             InlineKeyboardButton(
                 "ᴄʟᴏsᴇ", callback_data="ttp"
-            ),
+            ),                    
         ],
     ]
     await callback_query.edit_message_text(
