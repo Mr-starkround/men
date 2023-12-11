@@ -217,3 +217,21 @@ async def topup_handler(client: Client, msg: types.Message):
     pesan += f'<b>CATATAN:</b> apabila batas kirim harian belum habis. coin tidak akan berkurang'
  
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
+
+async def cb_hapus(client, callback_query):
+    user_id = callback_query.from_user.id
+    buttons = [
+        [
+            InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="ttp"
+            ),
+        ],
+    ]
+    await callback_query.edit_message_text(
+        f"""
+<biaya hapus menfess adalah 20 coin. 
+silahkan hubungi @vxnjul
+""",
+        disable_web_page_preview=True,
+     reply_markup=InlineKeyboardMarkup(buttons),
+)
