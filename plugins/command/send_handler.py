@@ -76,7 +76,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         await db.update_menfess(coin, menfess, all_menfess)
 
 keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/2089195394/{kirim.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
+ [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/{str(message_id)}/{chat.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
 ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
