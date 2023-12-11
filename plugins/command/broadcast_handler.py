@@ -38,11 +38,11 @@ async def yaaaa(client: Client, query: CallbackQuery):
     await msg.edit('Broadcast sedang berlangsung, tunggu sebentar', reply_markup = None)
     for user_id in user_ids:
         try:
-            await msg.copy(user_id)
+            await broadcast_msg.copy(user_id)
             berhasil += 1
         except FloodWait as e:
             await asyncio.sleep(e.x)
-            await msg.copy(user_id)
+            await broadcast_msg.copy(user_id)
             berhasil += 1
         except UserIsBlocked:
             blokir += 1
@@ -63,7 +63,7 @@ Gagal terkirim: {str(gagal)}"""
     await msg.delete()
     await message.delete()
 
-async def broadcast_ya(client: Bot, message: Message):
+async def broadcast_ya(client: Client, query: CallbackQuery):
     if message.reply_to_message:
         query = await query_msg()
         broadcast_msg = message.reply_to_message
