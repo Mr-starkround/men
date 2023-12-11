@@ -22,21 +22,22 @@ async def broadcast_handler(client: Client, msg: Message):
         await anu.reply('apakah kamu akan mengirimkan pesan broadcast ?', True, reply_markup=markup)
 
 async def broadcast_ya(client: Client, query: CallbackQuery):
-    msg = query.message
-    db = Database(msg.from_user.id)
-    if not msg.reply_to_message:
-        await query.answer('Pesan tidak ditemukan', True)
-        await query.message.delete()
-        return
-    message = msg.reply_to_message
-    user_ids = db.get_pelanggan().id_pelanggan
+        if message.reply_to_message:
+        query = await query_msg()
+        broadcast_msg = message.reply_to_message
+        total = 0
+        successful = 0
+        blocked = 0
+        deleted = 0
+        unsuccessful = 0
 
-    berhasil = 0
-    dihapus = 0
-    blokir = 0
-    gagal = 0
-    await msg.edit('Broadcast sedang berlangsung, tunggu sebentar', reply_markup = None)
-    for user_id in user_ids:
+        pls_wait = await message.reply(
+            "<code>Broadcasting Message Tunggu Sebentar...</code>"
+        )
+        for row in query:
+            chat_id = int(row[0])
+            if chat_id not in [ admin ] :
+                try:
         try:
             await message.copy(user_id)
             berhasil += 1
