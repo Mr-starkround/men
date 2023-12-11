@@ -19,6 +19,7 @@ id_admin = int(os.environ.get("ID_ADMIN", "6725628980"))
 
 batas_kirim = int(os.environ.get("BATAS_KIRIM", "3"))
 biaya_kirim = int(os.environ.get("BIAYA_KIRIM", "10"))
+biaya_hapus = int(os.environ.get("BIAYA_HAPUS", "20"))
 # =========================================================== #
 
 hastag = os.environ.get("HASTAG", "#pft #pftt #mas #mba #story #spill #story #pap").replace(" ", "|").lower()
