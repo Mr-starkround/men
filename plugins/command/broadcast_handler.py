@@ -42,7 +42,7 @@ async def broadcast_ya(client: Client, query: CallbackQuery):
             berhasil += 1
         except FloodWait as e:
             await asyncio.sleep(e.x)
-            await message.copy(user_id)
+            await client.copy_message(user_id)
             berhasil += 1
         except UserIsBlocked:
             blokir += 1
