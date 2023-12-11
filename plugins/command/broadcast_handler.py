@@ -36,7 +36,7 @@ async def broadcast_ya(client: Client, query: CallbackQuery):
         )
         for row in query:
             chat_id = int(row[0])
-            if chat_id not in [ admin ] :
+            if chat_id not in 'admin' :
                 try:
         try:
             await message.copy(user_id)
