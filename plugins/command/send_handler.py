@@ -16,6 +16,7 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         if menfess >= config.batas_kirim:
             if user.status == 'member' or user.status == 'talent':
                 if coin >= config.biaya_kirim:
+                    coin = db_user.coin - config.biaya_hapus:
                     coin = user.coin - config.biaya_kirim   
                 else:
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\n<b>Kamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. <b>Topup Coin silahkan klik</b> /topup ', True, enums.ParseMode.HTML)
@@ -42,7 +43,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
     keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/2089195394/{msg.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
+ [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/2089195394/{msg.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'{config.biaya_hapus}')],
 ]
     
     reply_markup = InlineKeyboardMarkup(keyboard)
