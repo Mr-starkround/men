@@ -136,7 +136,7 @@ async def cb_help(client, callback_query):
     buttons = [
         [
             InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="tpp"
+                "ᴄʟᴏsᴇ", callback_data="ttp"
             ),
         ],
     ]
