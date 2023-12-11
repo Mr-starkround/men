@@ -46,9 +46,8 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
 
-link = await get_link()           
-        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
-        await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
+link = await get_link()                 
+      await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
 
 
