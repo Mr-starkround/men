@@ -203,8 +203,8 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await video_handler_inline(client, query)
     elif query.data == 'lihat':
         await send_menfess_handler(client, query)
-    elif query.data == 'tpp':
-        await start_handler(client, query)
+    elif query.data == 'hps':
+        await cb_hapus(client, query)
     elif query.data == 'nsj':
         await cb_help(client, query)
     elif query.data == 'ttp':
