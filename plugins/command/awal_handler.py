@@ -223,7 +223,7 @@ async def cb_hapus(client, callback_query):
     buttons = [
         [
         InlineKeyboardButton(
-                "🗑ʜᴀᴘᴜs", url="https://t.me/GJN_adminbot?start=start"
+                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJN_adminbot?start=start"
  ),          
         ],
     ]
