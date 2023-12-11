@@ -46,6 +46,17 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
 
+    if isinstance(x, Message):
+        message_id = x.message_id
+        chat_id = x.chat.id
+    else:
+        message_id = None
+        chat_id = None
+
+keyboard = [
+ [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/{str(message_id)}/{chat.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
+]
+
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     if msg.text or msg.photo or msg.video or msg.voice:
@@ -77,9 +88,6 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
 
-keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/{str(message_id)}/{chat.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
-]
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
     else:
         await msg.reply('media yang didukung photo, video dan voice')
