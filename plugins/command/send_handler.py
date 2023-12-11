@@ -71,7 +71,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         link = await get_link()  
         message_id = None
         chat_id = None            
-        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id  None)
+        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id, None)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
 
