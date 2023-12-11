@@ -30,8 +30,7 @@ async def on_message(client: Client, msg: Message):
         # Pesan jika bot sedang dalam kondisi tidak aktif
         if not database.get_data_bot(client.id_bot).bot_status:
             status = [
-                'member', 'banned', 'topup', 'daddy sugar', 'moans girl',
-                'moans boy', 'girlfriend rent', 'boyfriend rent'
+                'member', 'banned', 'topup'
             ]
             member = database.get_data_pelanggan()
             if member.status in status:
@@ -63,28 +62,13 @@ async def on_message(client: Client, msg: Message):
             elif command == '/topup':
                 return await topup_handler(client, msg)
 
-            elif command == '/daddysugar':
-                return await gagal_kirim_handler(client, msg)
-
-            elif command == '/moansgirl':
-                return await gagal_kirim_handler(client, msg)
-
-            elif command == '/moansboy':
-                return await gagal_kirim_handler(client, msg)
-
-            elif command == '/gfrent':
-                return await gagal_kirim_handler(client, msg)
-
-            elif command == '/bfrent':
-                return await gagal_kirim_handler(client, msg)
-
             elif command == '/stats':  # menampilkan perintah statistik
                 if uid == config.id_admin:
                     return await statistik_handler(helper, client.id_bot)
 
             elif command == '/broadcast':
                 if uid == config.id_admin:
-                    return await send_text(client, msg)
+                    return await broadcast_handler(client, msg)
 
             elif command in ['/settings', '/setting']:  # menampilkan perintah settings
                 member = database.get_data_pelanggan()
@@ -108,35 +92,7 @@ async def on_message(client: Client, msg: Message):
             elif re.search(r"^[\/]unadmin", command):
                 if uid == config.id_admin:
                     return await hapus_admin_handler(client, msg)
-
-            elif re.search(r"^[\/]addtalent", command):  # menambahkan talent baru
-                if uid == config.id_admin:
-                    return await tambah_talent_handler(client, msg)
-
-            elif re.search(r"^[\/]addsugar", command):  # menambahkan daddy sugar baru
-                if uid == config.id_admin:
-                    return await tambah_sugar_daddy_handler(client, msg)
-
-            elif re.search(r"^[\/]addgirl", command):  # menambahkan moans girl baru
-                if uid == config.id_admin:
-                    return await tambah_moans_girl_handler(client, msg)
-
-            elif re.search(r"^[\/]addboy", command):  # menambahkan moans boy baru
-                if uid == config.id_admin:
-                    return await tambah_moans_boy_handler(client, msg)
-
-            elif re.search(r"^[\/]addgf", command):  # menambahkan gf rent baru
-                if uid == config.id_admin:
-                    return await tambah_gf_rent_handler(client, msg)
-
-            elif re.search(r"^[\/]addbf", command):  # menambahkan bf rent baru
-                if uid == config.id_admin:
-                    return await tambah_bf_rent_handler(client, msg)
-
-            elif re.search(r"^[\/]hapus", command):  # menambahkan mengapus talent
-                if uid == config.id_admin:
-                    return await hapus_talent_handler(client, msg)
-
+          
             elif re.search(r"^[\/]ban", command):  # membanned user
                 member = database.get_data_pelanggan()
                 if member.status in ['admin', 'owner']:
