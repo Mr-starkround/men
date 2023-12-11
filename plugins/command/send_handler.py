@@ -46,13 +46,21 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
 
-    if isinstance(x, Message):
-        message_id = x.message_id
-        chat_id = x.chat.id
-    else:
+link = await get_link()  
         message_id = None
-        chat_id = None
+        chat_id = None            
+        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id, None)
+        await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
+        await db.update_menfess(coin, menfess, all_menfess)
 
+
+keyboard = [
+ [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/{link}/{kirim.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
+]
+
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
@@ -86,13 +94,6 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     else:
         await msg.reply('media yang didukung photo, video dan voice')
 
-keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/{str(message_id)}/{chat.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
-]
-
-    reply_markup = InlineKeyboardMarkup(keyboard)
-
-    
 async def transfer_coin_handler(client: Client, msg: types.Message):
     if re.search(r"^[\/]tf_coin(\s|\n)*$", msg.text or msg.caption):
         err = "<i>perintah salah /tf_coin [jmlh_coin]</i>" if msg.reply_to_message else "<i>perintah salah /tf_coin [id_user] [jmlh_coin]</i>"
