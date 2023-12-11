@@ -21,7 +21,7 @@ async def broadcast_handler(client: Client, msg: Message):
         ])
         await anu.reply('apakah kamu akan mengirimkan pesan broadcast ?', True, reply_markup=markup)
 
-async def broadcast_ya(client: Client, query: CallbackQuery):
+async def yaaaa(client: Client, query: CallbackQuery):
     msg = query.message
     db = Database(msg.from_user.id)
     if not msg.reply_to_message:
