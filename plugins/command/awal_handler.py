@@ -223,17 +223,19 @@ async def cb_hapus(client, callback_query):
     buttons = [
         [
         InlineKeyboardButton(
-                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupupcoinbot?start=start"
- ),
-            InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="ttp"
-            ),                    
+                "🗑ʜᴀᴘᴜs", url="https://t.me/GJN_adminbot?start=start"
+ ),          
         ],
     ]
     await callback_query.edit_message_text(
         f"""
-<biaya hapus menfess adalah 20 coin. 
-silahkan hubungi @vxnjul
+<b>❏Silahkan ketik salah satu format dibawah ini:</b>
+├ <code>/tf_coin 1020381855 25</code>
+├<code>/tf_coin 5422684990 25</code>
+├ <code>/tf_coin 1717010997 25</code>
+└<code> /tf_coin 6188825810 25</code>
+
+<b>Jika sudah, salin bukti transfer coin anda lalu pergi ke button hapus dibawah ini</b>
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
