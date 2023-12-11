@@ -229,6 +229,8 @@ async def cb_hapus(client, callback_query):
     ]
     await callback_query.edit_message_text(
         f"""
+<b> Biaya menghapus postingan adalah 25 coin. Jika anda belum memiliki coin silahkan pergi ke menu top up.</b>
+
 <b>❏Silahkan ketik salah satu format dibawah ini:</b>
 ├ <code>/tf_coin 1020381855 25</code>
 ├<code>/tf_coin 5422684990 25</code>
