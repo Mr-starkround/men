@@ -84,7 +84,7 @@ async def on_message(client: Client, msg: Message):
 
             elif command == '/broadcast':
                 if uid == config.id_admin:
-                    return await broadcast_handler(client, msg)
+                    return await send_text(client, msg)
 
             elif command in ['/settings', '/setting']:  # menampilkan perintah settings
                 member = database.get_data_pelanggan()
