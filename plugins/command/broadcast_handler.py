@@ -23,7 +23,7 @@ async def broadcast_handler(client: Client, msg: Message):
 
 async def broadcast_ya(client: Client, query: CallbackQuery):
         if message.reply_to_message:
-        query = await query_msg()
+        await query_msg()
         broadcast_msg = message.reply_to_message
         total = 0
         successful = 0
