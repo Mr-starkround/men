@@ -45,11 +45,10 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel            
-         
-
-keyboard = [
+         keyboard = [
  [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/{link}/{kirim.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
-]    reply_markup = InlineKeyboardMarkup(keyboard)
+]
+    reply_markup = InlineKeyboardMarkup(keyboard)
 
     
     if msg.text or msg.photo or msg.video or msg.voice:
