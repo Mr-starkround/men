@@ -38,11 +38,11 @@ async def broadcast_ya(client: Client, query: CallbackQuery):
     await msg.edit('Broadcast sedang berlangsung, tunggu sebentar', reply_markup = None)
     for user_id in user_ids:
         try:
-            await message.copy(user_id)
+            await query.message.copy(user_id)
             berhasil += 1
         except FloodWait as e:
             await asyncio.sleep(e.x)
-            await message.copy(user_id)
+            await query.message.copy(user_id)
             berhasil += 1
         except UserIsBlocked:
             blokir += 1
