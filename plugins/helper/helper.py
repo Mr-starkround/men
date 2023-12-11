@@ -30,7 +30,7 @@ class Helper():
         if user_id == config.id_admin:
             return True
         try:
-            member = await self.bot.get_chat_member(config.channel_1, user_id)
+            member = await self.bot.get_chat_member(config.channel_1, config.channel_2, user_id)
         except UserNotParticipant:
             return False
 
