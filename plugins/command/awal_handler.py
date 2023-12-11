@@ -138,7 +138,10 @@ async def cb_help(client, callback_query):
             InlineKeyboardButton(
                 "ᴄʟᴏsᴇ", callback_data="ttp"
             ),
-        ],
+      InlineKeyboardButton(
+                "ʙᴀᴄᴋ", callback_data="bck"
+            ),
+  ],
     ]
     await callback_query.edit_message_text(
         f"""
@@ -238,6 +241,28 @@ async def cb_hapus(client, callback_query):
 └<code>/tf_coin 6188825810 25</code>
 
 <b>Jika sudah, salin code transfer dan bukti transfer coin anda lalu pergi ke button hapus dibawah ini</b>
+""",
+        disable_web_page_preview=True,
+     reply_markup=InlineKeyboardMarkup(buttons),
+)
+
+async def cb_back(client, callback_query):
+    user_id = callback_query.from_user.id
+    buttons = [
+       [
+       InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),
+            InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+ ),          
+        ],
+    ]
+    await callback_query.edit_message_text(
+        f"""
+𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
+
+<b>silahkan baca help dan rules terlebih dahulu</b>
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
