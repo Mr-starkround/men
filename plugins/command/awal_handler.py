@@ -240,7 +240,7 @@ async def test_handler(client: Client, msg: types.Message):
         ],
     ]
 
-await  (config.topup_msg.format(
+  if text == config.topup_msg.format(
             id=msg.from_user.id,
             mention=mention,
             username=username,
@@ -248,7 +248,8 @@ await  (config.topup_msg.format(
             last_name=await helper.escapeHTML(last),
             fullname=await helper.escapeHTML(fullname),
         ),
-        disable_web_page_preview, True,
+   
+    await disable_web_page_preview, True,
         callback_query==InlineKeyboardMarkup(buttons),
         quote, True
     )
