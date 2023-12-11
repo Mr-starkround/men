@@ -1,13 +1,9 @@
 import config
 import re
- 
+
 from pyrogram import Client, types, enums
 from plugins import Database, Helper
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
-async def get_link():
-    anu = str(config.channel_1).split('-100')[1]
-    return f"https://t.me/c/{anu}/"
 
 async def send_with_pic_handler(client: Client, msg: types.Message, key: str, hastag: list):
     db = Database(msg.from_user.id)
@@ -39,19 +35,15 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
     else:
         await msg.reply('media yang didukung photo, video dan voice')
-   
+
 async def send_menfess_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
-    db_bot = db.get_data_bot(client.id_bot).kirimchannel 
-           
-         keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/{link}/{kirim.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
-]
-    reply_markup == InlineKeyboardMarkup(keyboard)
-
-    
+    db_bot = db.get_data_bot(client.id_bot).kirimchannel
+    keyboard = [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ ᴘᴇsᴀɴ", url="https://t.me/jawafes"),
+InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url="https://t.me/vxnjul")]
+    reply_markup = InlineKeyboardMarkup(keyboard)
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
@@ -70,20 +62,20 @@ async def send_menfess_handler(client: Client, msg: types.Message):
             if db_user.status == 'member' or db_user.status == 'talent':
                 if coin >= config.biaya_kirim:
                     coin = db_user.coin - config.biaya_kirim
-
                 else:
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
-        link = await get_link()  
-        message_id = None
-        chat_id = None            
-        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id, None)
+        link = await get_link()              
+        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
-
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
     else:
         await msg.reply('media yang didukung photo, video dan voice')
+
+async def get_link():
+    anu = str(config.channel_1).split('-100')[1]
+    return f"https://t.me/c/{anu}/"
 
 async def transfer_coin_handler(client: Client, msg: types.Message):
     if re.search(r"^[\/]tf_coin(\s|\n)*$", msg.text or msg.caption):
