@@ -45,7 +45,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel            
-     link = await get_link()     
+         
 
 keyboard = [
  [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/{link}/{kirim.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", url=f'tg://deleteMessage?chat_id={msg.from_user.id}')],
