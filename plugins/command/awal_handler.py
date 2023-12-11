@@ -135,12 +135,12 @@ async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id
     buttons = [
         [
-            InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="ttp"
-            ),
-      InlineKeyboardButton(
+InlineKeyboardButton(
                 "ʙᴀᴄᴋ", callback_data="bck"
             ),
+            InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="ttp"
+            ),    
   ],
     ]
     await callback_query.edit_message_text(
