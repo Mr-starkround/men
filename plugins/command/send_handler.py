@@ -7,7 +7,8 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 async def get_link():
     anu = str(config.channel_1).split('-100')[1]
-   
+    return "https://t.me/c/{anu}"
+
 async def send_with_pic_handler(client: Client, msg: types.Message, key: str, hastag: list):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
