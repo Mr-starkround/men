@@ -258,7 +258,7 @@ async def cb_back(client, callback_query):
  ),          
         ],
     ]
-       await callback.query.message(
+       await callback_query.message(
         text=config.star_msg.format(
             id=msg.from_user.id,
             mention=mention,
