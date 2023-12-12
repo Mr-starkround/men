@@ -50,7 +50,7 @@ async def on_message(client: Client, msg: Message):
             elif command == '/help':
                 return await help_handler(client, msg)
 
-           elif command == '/cuz':
+           elif command == '/talent':
                 return await delep_handler(client, msg)
 
             elif command == '/status':  # menampilkan perintah status
