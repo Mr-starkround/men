@@ -251,7 +251,7 @@ async def cb_hapus(client, callback_query):
      reply_markup=InlineKeyboardMarkup(buttons),
 )
 
-async def start_handler(client: Client, msg: types.callback_query):
+async def cb_back(client: Client, query: CallbackQuery):
     helper = Helper(client, msg)
     user_id = callback_query.from_user.id
 first = msg.from_user.first_name
