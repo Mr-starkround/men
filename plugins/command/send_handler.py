@@ -77,8 +77,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
 
 async def get_link():
     anu = str(config.channel_1).split('-100')[1]
-    return f"https://t.me/c/{anu}/"
-
+   
 async def transfer_coin_handler(client: Client, msg: types.Message):
     if re.search(r"^[\/]tf_coin(\s|\n)*$", msg.text or msg.caption):
         err = "<i>perintah salah /tf_coin [jmlh_coin]</i>" if msg.reply_to_message else "<i>perintah salah /tf_coin [id_user] [jmlh_coin]</i>"
