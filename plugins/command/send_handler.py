@@ -42,7 +42,7 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
 
 async def send_menfess_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    link = await get_link()    
+    link = helper.get_link()    
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel             
