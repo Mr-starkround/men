@@ -251,7 +251,7 @@ async def cb_hapus(client, callback_query):
      reply_markup=InlineKeyboardMarkup(buttons),
 )
 
-async def cb_hapus(client, callback_query):
+async def cb_back(client, callback_query):
     user_id = callback_query.from_user.id
     buttons = [
         [
