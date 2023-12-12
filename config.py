@@ -35,7 +35,7 @@ silahkan baca help dan rules terlebih dahulu</b>""")
 # =========================================================== #
 
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
-{mention}, <b>Pesan anda gagal terkirim. <b>silahkan klik button help bila butuh bantuan</b>
+{mention}, <b>Pesan anda gagal terkirim.\nsilahkan klik button help bila butuh bantuan</b>
 """)
 # =========================================================== #
 
