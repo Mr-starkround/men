@@ -255,6 +255,7 @@ async def cb_back(client, callback_query):
             first_name=await helper.escapeHTML(first),
             last_name=await helper.escapeHTML(last),
             fullname=await helper.escapeHTML(fullname),
+   )
     buttons = [
        [
        InlineKeyboardButton(
