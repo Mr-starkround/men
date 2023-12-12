@@ -47,8 +47,7 @@ async def send_menfess_handler(c: Client, cb: CallbackQuery):
     if match == 1:
         channel_tujuan1 = config.channel_1
     elif match == 2:
-        channel_tujuan2 = config.channel_2
-    else:        
+        channel_tujuan2 = config.channel_2           
     x = await c.copy_message(
         channel_tujuan1,
         m.chat.id,
@@ -58,8 +57,8 @@ async def send_menfess_handler(c: Client, cb: CallbackQuery):
     if isinstance(x, Message):
         message_id = x.message_id
         chat_id = x.chat.id
-    else:
-        message_id = None
+    
+  elif  message_id = None
         chat_id = None
     await m.delete()
     await m.reply(
