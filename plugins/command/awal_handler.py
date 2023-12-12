@@ -163,7 +163,7 @@ InlineKeyboardButton(
 
 
 async def cb_close(client, callback_query):
-    await callback_query.message.delete()
+    await callback_query.message.delete_text()
 
 async def help_handler(client, msg):
     db = Database(msg.from_user.id)
@@ -274,37 +274,3 @@ async def cb_back(client, callback_query):
      reply_markup=InlineKeyboardMarkup(buttons),
 )
 
-
-async def delep_handler(client: Client, msg: types.Message):
-    helper = Helper(client, msg)
-    first = msg.from_user.first_name
-    fullname = f'{first} {last}' if last else first
-    username = (
-        f'@{msg.from_user.username}'
-        if msg.from_user.username
-        else '@vxnjul'
-    )
-    mention = msg.from_user.mention
-    buttons = [
-        [
-            InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
-            InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
-            ),
-        ],
-    ]
-    await msg.reply_text(
-        text=config.topup_msg.format(
-            id=msg.from_user.id,
-            mention=mention,
-            username=username,
-            first_name=await helper.escapeHTML(first),
-            last_name=await helper.escapeHTML(last),
-            fullname=await helper.escapeHTML(fullname),
-        ),
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True
-    )
