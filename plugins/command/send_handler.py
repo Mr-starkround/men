@@ -5,6 +5,9 @@ from pyrogram import Client, types, enums
 from plugins import Database, Helper
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+async def get_link():
+    anu = str(config.channel_1).split('-100')[1]
+   
 async def send_with_pic_handler(client: Client, msg: types.Message, key: str, hastag: list):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
@@ -75,9 +78,6 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     else:
         await msg.reply('media yang didukung photo, video dan voice')
 
-async def get_link():
-    anu = str(config.channel_1).split('-100')[1]
-   
 async def transfer_coin_handler(client: Client, msg: types.Message):
     if re.search(r"^[\/]tf_coin(\s|\n)*$", msg.text or msg.caption):
         err = "<i>perintah salah /tf_coin [jmlh_coin]</i>" if msg.reply_to_message else "<i>perintah salah /tf_coin [id_user] [jmlh_coin]</i>"
