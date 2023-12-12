@@ -248,6 +248,13 @@ async def cb_hapus(client, callback_query):
 
 async def cb_back(client, callback_query):
     user_id = callback_query.from_user.id
+    text = config.star_msg.format(
+            id=msg.from_user.id,
+            mention=mention,
+            username=username,
+            first_name=await helper.escapeHTML(first),
+            last_name=await helper.escapeHTML(last),
+            fullname=await helper.escapeHTML(fullname),
     buttons = [
        [
        InlineKeyboardButton(
@@ -258,17 +265,7 @@ async def cb_back(client, callback_query):
  ),          
         ],
     ]
-        await callback_query.edit_message_text(
-        text=config.star_msg.format(
-            id=msg.from_user.id,
-            mention=mention,
-            username=username,
-            first_name=await helper.escapeHTML(first),
-            last_name=await helper.escapeHTML(last),
-            fullname=await helper.escapeHTML(fullname),
-        ),
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),
+        await callback_query.msg(text, enums.ParseMode.HTML,     reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
 
