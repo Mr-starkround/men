@@ -272,7 +272,7 @@ async def cb_back(client: callback_query, msg: types.Message):
  ),          
         ],
     ]
-      await callback_query.msg({config.start_msg}, True, enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons)
+      await callback_query({config.start_msg}, True, enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons)
 )
 
 
