@@ -248,8 +248,7 @@ async def cb_hapus(client, callback_query):
 
 async def cb_back(client, callback_query):
     helper = Helper(client, msg)
-    user_id = callback_query.from_user.id
-     mention = msg.from_user.mention
+    user_id = callback_query.from_user.id    
     username = msg.from_user.username       
    
     buttons = [
