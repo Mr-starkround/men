@@ -263,7 +263,7 @@ async def cb_back(client, callback_query):
  ),          
         ],
     ]
-     await callback_query.edit_message_text(
+     await callback_query.edit_message_text (
         f"""
 {config.start_msg}
 """,
