@@ -252,9 +252,15 @@ async def cb_hapus(client, callback_query):
 )
 
 async def cb_back(client: Client, msg: types.Message):
-    helper = Helper(client, msg)
-    user_id = callback_query.from_user.id
+helper = Helper(client, msg)
     first = msg.from_user.first_name
+    fullname = f'{first} {last}' if last else first
+    username = (
+        f'@{msg.from_user.username}'
+        if msg.from_user.username
+        else '@vxnjul'
+    )
+    mention = msg.from_user.mention
     buttons = [
         [
 InlineKeyboardButton(
