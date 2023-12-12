@@ -258,15 +258,19 @@ async def cb_back(client, callback_query):
  ),          
         ],
     ]
-    await callback_query.edit_message_text(
-        f"""
-𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
-
-<b>silahkan baca help dan rules terlebih dahulu</b>
-""",
+       await callback.query.message(
+        text=config.star_msg.format(
+            id=msg.from_user.id,
+            mention=mention,
+            username=username,
+            first_name=await helper.escapeHTML(first),
+            last_name=await helper.escapeHTML(last),
+            fullname=await helper.escapeHTML(fullname),
+        ),
         disable_web_page_preview=True,
-     reply_markup=InlineKeyboardMarkup(buttons),
-)
+        reply_markup=InlineKeyboardMarkup(buttons),
+        quote=True
+    )
 
 async def delep_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
