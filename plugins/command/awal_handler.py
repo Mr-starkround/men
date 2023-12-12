@@ -266,8 +266,7 @@ async def cb_back(client, callback_query):
  ),          
         ],
     ]
-        await callback_query.msg(text, enums.ParseMode.HTML,     reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True
+        await callback_query.msg(quote, True, enums.ParseMode.HTML,     reply_markup=InlineKeyboardMarkup(buttons),
     )
 
 async def delep_handler(client: Client, msg: types.Message):
