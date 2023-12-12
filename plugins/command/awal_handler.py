@@ -290,7 +290,6 @@ id=msg.from_user.id,
 async def delep_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     first = msg.from_user.first_name
-    last = msg.from_user.last_name
     fullname = f'{first} {last}' if last else first
     username = (
         f'@{msg.from_user.username}'
