@@ -265,7 +265,7 @@ first = msg.from_user.first_name
     buttons = [
         [
 InlineKeyboardButton(
-                "ʙᴀᴄᴋ", callback_data="bck"
+                "HELP", callback_data="nsj"
             ),
             InlineKeyboardButton(
                 "ᴄʟᴏsᴇ", callback_data="ttp"
