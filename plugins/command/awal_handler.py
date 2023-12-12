@@ -227,7 +227,7 @@ async def cb_hapus(client, callback_query):
         f'@{msg.from_user.username}'
         if msg.from_user.username
         else '@vxnjul'
-
+  )
     buttons = [
         [
         InlineKeyboardButton(
