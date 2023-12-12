@@ -261,7 +261,7 @@ async def cb_back(client, callback_query):
  ),          
         ],
     ]
-      return await callback_query.edit_message_text(
+      await callback_query.edit_message_text(
         f"""
  <b>silahkan kirim pesan anda menggunakan hashtag:</b> 
 • <code>#mba</code> [ untuk identitas perempuan]
