@@ -272,7 +272,11 @@ async def cb_back(client: callback_query, msg: types.Message):
  ),          
         ],
     ]
-      await callback_query({config.start_msg}, True, enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons)
+     await callback_query.edit_message_text(
+        f"""
+{config.start_msg}
+""",
+ disable_web_page_preview=True, enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons)
 )
 
 
