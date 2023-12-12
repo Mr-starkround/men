@@ -255,7 +255,6 @@ async def cb_back(client: Client, query: CallbackQuery):
     helper = Helper(client, msg)
     user_id = callback_query.from_user.id
 first = msg.from_user.first_name
-    last = msg.from_user.last_name
     fullname = f'{first} {last}' if last else first
     username = (
         f'@{msg.from_user.username}'
