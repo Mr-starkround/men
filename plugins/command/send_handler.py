@@ -40,45 +40,50 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
     else:
         await msg.reply('media yang didukung photo, video dan voice')
 
-async def send_menfess_handler(client: Client, msg: types.Message):
-    helper = Helper(client, msg) 
-    db = Database(msg.from_user.id)
-    db_user = db.get_data_pelanggan()
-    db_bot = db.get_data_bot(client.id_bot).kirimchannel             
-    if msg.text or msg.photo or msg.video or msg.voice:
-        if msg.photo and not db_bot.photo:
-            if db_user.status == 'member' or db_user.status == 'talent':
-                return await msg.reply('Tidak bisa mengirim photo, karena sedang dinonaktifkan oleh admin', True)
-        elif msg.video and not db_bot.video:
-            if db_user.status == 'member' or db_user.status == 'talent':
-                return await msg.reply('Tidak bisa mengirim video, karena sedang dinonaktifkan oleh admin', True)
-        elif msg.voice and not db_bot.voice:
-            if db_user.status == 'member' or db_user.status == 'talent':
-                return await msg.reply('Tidak bisa mengirim voice, karena sedang dinonaktifkan oleh admin', True)
-
-        menfess = db_user.menfess
-        all_menfess = db_user.all_menfess
-        coin = db_user.coin
-    keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=link,),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
-]
-    
-    reply_markup = InlineKeyboardMarkup(keyboard)
-        if menfess >= config.batas_kirim:
-            if db_user.status == 'member' or db_user.status == 'talent':
-                if coin >= config.biaya_kirim:
-                    coin = db_user.coin - config.biaya_kirim
-                else:
-                    return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
-
-        link = await get_link()              
-        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
-        await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
-        await db.update_menfess(coin, menfess, all_menfess)
-
-        await msg.reply(f"Pesan anda berhasil terkirim. \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
+async def send_menfess_handler(c: Client, cb: CallbackQuery):
+    m = cb.message
+    match = int(cb.matches[0].group(1))
+    message_id = m.reply_to_message.message_id
+    if match == 1:
+        channel_tujuan1 = config.channel_1
+    elif match == 2:
+        channel_tujuan2 = config.channel_2
+    else:        
+    x = await c.copy_message(
+        channel_tujuan1,
+        m.chat.id,
+        message_id,
+        caption=m.caption or None
+    )
+    if isinstance(x, Message):
+        message_id = x.message_id
+        chat_id = x.chat.id
     else:
-        await msg.reply('media yang didukung photo, video dan voice')
+        message_id = None
+        chat_id = None
+    await m.delete()
+    await m.reply(
+        "**Pesan berhasil terkirim, silakan lihat dengan klik tombol dibawah ini!**",
+        reply_markup=InlineKeyboardMarkup([
+            [
+                InlineKeyboardButton("Klik disini", url=f"https://t.me/c/{str(chat_id)[4:]}/{message_id}")
+            ]
+        ])
+    )
+    fwd = await c.forward_messages(
+        config.log_channel,
+        m.chat.id,
+        message_id
+    )
+    m = m.reply_to_message
+    await fwd.reply(
+        (
+            "**User mengirim pesan**\n"
+            f"Nama: {m.from_user.first_name}\n"
+            f"Id: {m.from_user.id}\n"
+            f"Username: {m.from_user.mention}"
+        )
+    )
 
 async def transfer_coin_handler(client: Client, msg: types.Message):
     if re.search(r"^[\/]tf_coin(\s|\n)*$", msg.text or msg.caption):
