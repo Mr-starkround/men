@@ -251,32 +251,29 @@ async def cb_hapus(client, callback_query):
      reply_markup=InlineKeyboardMarkup(buttons),
 )
 
-async def cb_back(client: Client, msg: types.Message):
-    helper = Helper(client, msg)
-    first = msg.from_user.first_name
+
+async def cb_back(client, callback_query):
+    user_id = callback_query.from_user.id
+    username = (
+        f'@{msg.from_user.username}'
+        if msg.from_user.username
+        else '@vxnjul'
+  )
     buttons = [
         [
-InlineKeyboardButton(
-                "HELP", callback_data="nsj"
-            ),
-            InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="ttp"
-            ),    
-  ],
+        InlineKeyboardButton(
+                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJN_adminbot?start=start"
+ ),          
+        ],
     ]
     await callback_query.edit_message_text(
         f"""
- {config.start_msg}
+{config.start_msg}
 """,
-id=msg.from_user.id,
-            mention=mention,
-            username=username,
-            first_name=await helper.escapeHTML(first),
-            last_name=await helper.escapeHTML(last),
-            fullname=await helper.escapeHTML(fullname),
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
 )
+
 
 async def delep_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
