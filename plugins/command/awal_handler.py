@@ -253,6 +253,15 @@ async def cb_hapus(client, callback_query):
 
 async def cb_back(client, callback_query):
     user_id = callback_query.from_user.id
+first = msg.from_user.first_name
+    last = msg.from_user.last_name
+    fullname = f'{first} {last}' if last else first
+    username = (
+        f'@{msg.from_user.username}'
+        if msg.from_user.username
+        else '@vxnjul'
+    )
+    mention = msg.from_user.mention
     buttons = [
         [
 InlineKeyboardButton(
@@ -267,6 +276,12 @@ InlineKeyboardButton(
         f"""
  {config.start_msg}
 """,
+id=msg.from_user.id,
+            mention=mention,
+            username=username,
+            first_name=await helper.escapeHTML(first),
+            last_name=await helper.escapeHTML(last),
+            fullname=await helper.escapeHTML(fullname),
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
 )
