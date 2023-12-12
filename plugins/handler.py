@@ -52,7 +52,7 @@ async def on_message(client: Client, msg: Message):
                 return await help_handler(client, msg)
 
             elif command == '/status':  # menampilkan perintah status
-                return await delep_handler(client, msg)
+                return await status_handler(client, msg)
 
             elif command == '/list_admin':  # menampilkan perintah list admin
                 return await list_admin_handler(helper, client.id_bot)
