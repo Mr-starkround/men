@@ -248,9 +248,9 @@ async def cb_hapus(client, callback_query):
 
 async def cb_back(client, callback_query):
     user_id = callback_query.from_user.id
-    mention = mention.from_user.id
-    username = username.from_user.id         
-   )
+     mention = msg.from_user.mention
+    username = msg.from_user.username       
+   
     buttons = [
        [
        InlineKeyboardButton(
