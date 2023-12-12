@@ -40,8 +40,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
-    db_bot = db.get_data_bot(client.id_bot).kirimchannel
-     link = get_link()              
+    db_bot = db.get_data_bot(client.id_bot).kirimchannel             
     keyboard = [
  [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url='{link + str(kirim.id)}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
 ]
