@@ -59,6 +59,11 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         menfess = db_user.menfess
         all_menfess = db_user.all_menfess
         coin = db_user.coin
+    keyboard = [
+ [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=link,),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
+]
+    
+    reply_markup = InlineKeyboardMarkup(keyboard)
         if menfess >= config.batas_kirim:
             if db_user.status == 'member' or db_user.status == 'talent':
                 if coin >= config.biaya_kirim:
@@ -66,11 +71,6 @@ async def send_menfess_handler(client: Client, msg: types.Message):
                 else:
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
-    keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=link,),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
-]
-    
-    reply_markup = InlineKeyboardMarkup(keyboard)
         link = await get_link()              
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
