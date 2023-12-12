@@ -46,7 +46,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel             
     keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url="https://t.me/c/str(config.channel_1).split('-100')[1]/str{kirim.id}"),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
+ [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url="https://t.me/c/{link + str(kirim.id)}"),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
 ]
     
     reply_markup = InlineKeyboardMarkup(keyboard)
