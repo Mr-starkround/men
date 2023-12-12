@@ -253,6 +253,7 @@ async def cb_hapus(client, callback_query):
 
 async def cb_back(client: callback_query, msg: types.Message):
     helper = Helper(client, msg)
+user_id = callback_query.from_user.id  
     first = msg.from_user.first_name
     last = msg.from_user.last_name
     fullname = f'{first} {last}' if last else first
@@ -262,7 +263,6 @@ async def cb_back(client: callback_query, msg: types.Message):
         else '@vxnjul'
     )
     mention = msg.from_user.mention
-user_id = callback_query.from_user.id  
     buttons = [
        [
        InlineKeyboardButton(
