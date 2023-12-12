@@ -16,12 +16,6 @@ async def broadcast_handler(client: Client, msg: Message):
     else:
         anu = msg.reply_to_message
         anu = await anu.copy(msg.chat.id, reply_to_message_id=anu.id)
-        markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton('Ya', 'ya_confirm'), InlineKeyboardButton('Tidak', 'tidak_confirm')]
-        ])
-        await anu.reply('apakah kamu akan mengirimkan pesan broadcast ?', True, reply_markup=markup)
-
-async def broadcast_ya(client: Client, query: CallbackQuery):
     msg = query.message
     db = Database(msg.from_user.id)
     if not msg.reply_to_message:
