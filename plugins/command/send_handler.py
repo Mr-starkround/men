@@ -58,7 +58,7 @@ async def send_menfess_handler(c: Client, cb: CallbackQuery):
         message_id = x.message_id
         chat_id = x.chat.id
     
-  elif  message_id = None
+    elif  message_id = None
         chat_id = None
     await m.delete()
     await m.reply(
