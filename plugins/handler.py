@@ -42,6 +42,7 @@ async def on_message(client: Client, msg: Message):
         command = msg.text or msg.caption
         if command is None:
             await gagal_kirim_handler(client, msg)
+            await delep_handler(client, msg)
 
         else:
             if command == '/start':  # menampilkan perintah start
