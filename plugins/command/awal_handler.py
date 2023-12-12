@@ -247,10 +247,7 @@ async def cb_hapus(client, callback_query):
 )
 
 async def cb_back(client, callback_query):
-    helper = Helper(client, msg)
     user_id = callback_query.from_user.id    
-    username = msg.from_user.username       
-   
     buttons = [
        [
        InlineKeyboardButton(
@@ -262,19 +259,7 @@ async def cb_back(client, callback_query):
         ],
     ]
       await callback_query.edit_message_text(
-        f"""
- <b>silahkan kirim pesan anda menggunakan hashtag:</b> 
-• <code>#mba</code> [ untuk identitas perempuan]
-• <code>#mas</code> [ untuk identitas laki-laki ]
-• <code>#spill</code> [ untuk spill masalah ]
-• <code>#tanya</code> [ untuk bertanya ]
-• <code>#story</code> [ untuk berbagi cerita/curhat ]
-• <code>#pap</code> [ khusus media foto/video ] 
-
-<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk {username}</code>
-
-<b>Pastikan lebih dari 3 kata</b>
-""",
+        f"""{config.start_msg}""",
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
 )
