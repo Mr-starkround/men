@@ -71,7 +71,7 @@ async def send_menfess_handler(c: Client, cb: CallbackQuery):
         ])
     )
     fwd = await c.forward_messages(
-        config.log_channel,
+        config.channel_log,
         m.chat.id,
         message_id
     )
