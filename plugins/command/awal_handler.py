@@ -251,25 +251,25 @@ async def cb_hapus(client, callback_query):
      reply_markup=InlineKeyboardMarkup(buttons),
 )
 
-async def cb_back(client, callback_query):
+async def cb_hapus(client, callback_query):
     user_id = callback_query.from_user.id
     buttons = [
-       [
-       InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
+        [
+InlineKeyboardButton(
+                "ʙᴀᴄᴋ", callback_data="bck"
             ),
             InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
- ),          
-        ],
+                "ᴄʟᴏsᴇ", callback_data="ttp"
+            ),    
+  ],
     ]
-     await callback_query.edit_message_text (
+    await callback_query.edit_message_text(
         f"""
-{config.start_msg}
+ {config.start_msg}
 """,
- disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons)
+        disable_web_page_preview=True,
+     reply_markup=InlineKeyboardMarkup(buttons),
 )
-
 
 async def delep_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
