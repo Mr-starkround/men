@@ -92,7 +92,7 @@ async def list_ban_handler(helper: Helper, id_bot: int):
         pesan = "<b>Daftar banned</b>\n"
         ind = 1
         for i in db.ban:
-            pesan += "• ID: " + str(i) + " | <a href='tg://user?id=" + str(i) + "'>Banned " + str(ind) + " )</a>\n"
+            pesan += "• ID: " + str(i) + " | <a href='tg://OpenMessage?user_id=" + str(i) + "'>Banned " + str(ind) + " )</a>\n"
             ind += 1
     await helper.message.reply_text(pesan, True, enums.ParseMode.HTML)
 
