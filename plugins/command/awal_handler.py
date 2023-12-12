@@ -248,13 +248,8 @@ async def cb_hapus(client, callback_query):
 
 async def cb_back(client, callback_query):
     user_id = callback_query.from_user.id
-    text = config.star_msg.format(
-            id=msg.from_user.id,
-            mention=mention,
-            username=username,
-            first_name=await helper.escapeHTML(first),
-            last_name=await helper.escapeHTML(last),
-            fullname=await helper.escapeHTML(fullname),
+    mention = mention.from_user.id
+    username = username.from_user.id         
    )
     buttons = [
        [
