@@ -60,11 +60,10 @@ class Helper():
                 else None,
                 mention=message.from_user.mention,
                 id=message.from_user.id,
-            ),
-            reply_markup=markup,
+            ),           
             disable_web_page_preview=True,
             quote=True,
-        )
+       reply_markup=markup)
 
     async def daftar_pelanggan(self):
         database = Database(self.user_id)
