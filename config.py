@@ -39,5 +39,13 @@ gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
 # =========================================================== #
 
 topup_msg = os.environ.get("PESAN_TOPUP", """
-❏ Haii {mention} \n\nJawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin. \ncoin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b> \n\napabila batas kirim harian belum habis. coin tidak akan berkurang \n\n<b>❏ Cara Membeli Coin Jawafess:</b> \n├ 1. Salin format top up dibawah👇🏻👇🏻 \n├ 2. Klik /belicoin \n├ 3. save qris dan lakukan pembayaran. \n├ 4. kirimkan bukti pembayaran beserta format topup \n└ <b>BENEFIT TOPUP COIN JAWAFESS:</b> bisa kirim menfess sebanyak-banyaknya diluar batasan harian
+Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.
+
+❏ Cara Membeli Coin Jawafess
+├1. klik button top up dibawah ini
+├2. kirim bukti pembayaran anda <a href='https://t.me/GJNadminbot?start=start'>disini</a>
+├3. nama [ nama telegram anda ]
+└4. code top up : top up {user_id}
+
+coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>
 """)
