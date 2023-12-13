@@ -287,4 +287,4 @@ async def cb_topup(client, callback_query):
     pesan += f'└4. code top up : top up {user_id}\n\n'
     pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>'
 
-    await callback_query.edit_message_text(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
+    await callback_query.edit_message_text(pesan, True, reply_markup=reply_markup)
