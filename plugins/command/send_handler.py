@@ -69,7 +69,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
             [
                 InlineKeyboardButton(
                     f"👀ʟɪʜᴀᴛ",
-                url=link + str({kirim.id}),
+                url=link + str(kirim.id),
                 ),
                 InlineKeyboardButton(
                     "🗑ʜᴀᴘᴜs",
