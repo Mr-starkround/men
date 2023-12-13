@@ -47,6 +47,10 @@ InlineKeyboardButton(
 async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
+    keyboard = [
+        [InlineKeyboardButton(                "cara ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ", callback_data="tpp")],
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)        
     pesan = '<b>❏ User Info:</b>\n'
     pesan += f'├<b>Nama :</b> {db.mention}\n'
     pesan += f'├<b>User ID :</b> <code>{db.id}</code>\n'
@@ -272,17 +276,10 @@ async def cb_back(client, callback_query):
 
 async def cb_topup(client, callback_query):
     user_id = callback_query.from_user.id
-    buttons = [
-       [
-            InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
- ),          
-      InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
-        ],
+    keyboard = [
+        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://telegra.ph//file/edae2f8b4a1453b8a6e52.jpg")],
     ]
-
+    reply_markup = InlineKeyboardMarkup(keyboard)        
     pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
     pesan += f'❏ Cara Membeli Coin Jawafess</b>\n'
     pesan += f'├1. klik button top up dibawah ini\n'
