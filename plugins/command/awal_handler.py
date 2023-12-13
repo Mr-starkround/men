@@ -205,8 +205,8 @@ async def help_handler(client, msg):
 
 async def topup_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    db = Database(msg.from_user.id).get_data_pelanggan()
-   user_id = callback_query.from_user.id 
+    mention = msg.from_user.mention
+    user_id = msg.from_user.id 
     keyboard = [
         [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://telegra.ph//file/edae2f8b4a1453b8a6e52.jpg")],
     ]
@@ -219,7 +219,7 @@ async def topup_handler(client: Client, msg: types.Message):
     pesan += f'└4. code top up : top up {user_id}\n\n'
     pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>'
 
-    await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
+    await msg.reply(pesan, user_id, mention,  True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
 async def cb_hapus(client, callback_query):
     user_id = callback_query.from_user.id
