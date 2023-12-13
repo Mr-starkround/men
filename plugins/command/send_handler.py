@@ -65,8 +65,8 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
         link = await get_link()
         kirim = await some_function()
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
-
-         keyboard = [
+        
+        keyboard = [
             [
                 InlineKeyboardButton(
                     f"👀ʟɪʜᴀᴛ",
