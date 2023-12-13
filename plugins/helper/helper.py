@@ -53,10 +53,7 @@ await msg.reply_text(
         text=config.pesan_join.format(
             id=msg.from_user.id,
             mention=mention,
-            username=username,
-            first_name=await helper.escapeHTML(first),
-            last_name=await helper.escapeHTML(last),
-            fullname=await helper.escapeHTML(fullname),
+            username=username,           
         ),
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
