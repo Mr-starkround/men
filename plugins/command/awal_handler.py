@@ -268,3 +268,27 @@ async def cb_back(client, callback_query):
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
 )
+
+
+async def cb_topup(client, callback_query):
+    user_id = callback_query.from_user.id
+    buttons = [
+       [
+            InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+ ),          
+      InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),
+        ],
+    ]
+
+    pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
+    pesan += f'❏ Cara Membeli Coin Jawafess</b>\n'
+    pesan += f'├1. klik button top up dibawah ini\n'
+    pesan += f'├2. kirim bukti pembayaran anda <a href='https://t.me/GJNadminbot?start=start'>disini</a>\n'
+    pesan += f'├3. nama [ nama telegram anda ]\n'
+    pesan += f'└4. code top up : top up {user_id}\n\n'
+    pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>'
+
+    await callback_query.message(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
