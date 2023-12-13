@@ -53,7 +53,7 @@ class Helper():
         _msg = f"""
         <b>Hallo {mention}\n\n
         Anda harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @JAWAFES.\n\n
-        Silakan Join Ke Channel & Group dulu ⤵️</b>"
+        Silakan Join Ke Channel & Group dulu ⤵️</b>
         """
         await self.bot.send_message(self.user_id, _msg, reply_to_message_id=self.message.id, reply_markup=markup)
 
