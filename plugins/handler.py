@@ -177,3 +177,6 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await broadcast_ya(client, query)
     elif query.data == 'tutup':
         await close_cbb(client, query)
+        await cb_topup(client, query)
+    elif query.data == 'tpp':
+        
