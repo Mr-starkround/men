@@ -17,7 +17,7 @@ async def broadcast_handler(client: Client, msg: Message):
         anu = msg.reply_to_message
         anu = await anu.copy(msg.chat.id, reply_to_message_id=anu.id)
         markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton('Ya', 'ya_confirm'), InlineKeyboardButton('Tidak', 'ttp')]
+            [InlineKeyboardButton('Ya', 'ya_confirm'), InlineKeyboardButton('Tidak', 'tutup')]
         ])
         await anu.reply('apakah kamu akan mengirimkan pesan broadcast ?', True, reply_markup=markup)
 
@@ -63,7 +63,7 @@ Gagal terkirim: {str(gagal)}"""
     await msg.delete()
     await message.delete()
 
-async def cb_close(client: Client, query: CallbackQuery):
+async def close_cbb(client: Client, query: CallbackQuery):
     try:
         await query.message.reply_to_message.delete()
     except:
