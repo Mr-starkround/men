@@ -45,7 +45,7 @@ Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5
 ├1. klik button top up dibawah ini
 ├2. kirim bukti pembayaran anda <a href='https://t.me/GJNadminbot?start=start'>disini</a>
 ├3. nama [ nama telegram anda ]
-└4. code top up : top up {user_id}
+└4. code topup anda » <code>jawafess {id} </code>
 
 coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>
 """)
