@@ -52,20 +52,7 @@ class Helper():
             [InlineKeyboardButton('Channel base', url=link_2), InlineKeyboardButton('Group base', url=link_1)],
             [InlineKeyboardButton('Coba lagi', url='https://t.me/{self.bot.username}?start=start')]
         ])
-            await self.bot.send_message(
-        text=config.pesan_join.format(
-            id=msg.from_user.id,
-            mention=mention,
-            username=username,
-            first_name=await helper.escapeHTML(first),
-            last_name=await helper.escapeHTML(last),
-            fullname=await helper.escapeHTML(fullname),
-        ),
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True
-    )
-
+          await self.bot.send_message(self.user_id, config.pesan_join, reply_to_message_id=self.mention reply_markup=markup)
 
     async def daftar_pelanggan(self):
         database = Database(self.user_id)
