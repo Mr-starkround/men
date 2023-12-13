@@ -48,7 +48,7 @@ class Helper():
         link_2 = await self.bot.export_chat_invite_link(config.channel_2)
         nn  = self.message.from_user.mention
 
-        buttons = [
+        markup = [
             [InlineKeyboardButton('ɢʀᴏᴜᴘ ʙᴀsᴇ', url=link_2), InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ ʙᴀsᴇ', url=link_1)],
             [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url='https://t.me/Jawafessbot?start=start')]
         ]
