@@ -51,9 +51,10 @@ class Helper():
             [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url='https://t.me/Jawafessbot?start=start')]
         ])
         _msg = f"""
-        <b>Hallo {mention}\n\n
-        Anda harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @JAWAFES.\n\n
-        Silakan Join Ke Channel & Group dulu ⤵️</b>
+        <b>Hallo {mention}</b>
+        
+        <b>Anda harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @JAWAFES</b>
+        <b>Silakan Join Ke Channel & Group dulu</b>
         """
         await self.bot.send_message(self.user_id, _msg, reply_to_message_id=self.message.id, reply_markup=markup)
 
