@@ -19,12 +19,12 @@ async def start_handler(client: Client, msg: types.Message):
     )
     mention = msg.from_user.mention
     buttons = [
-        [           
-            InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
+        [                       
             InlineKeyboardButton(
                 "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+            ),
+InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
             ),
         ],
     ]
@@ -63,11 +63,6 @@ async def statistik_handler(client: Helper, id_bot: int):
     pesan += f"▪️Pelanggan: {db.get_pelanggan().total_pelanggan}\n"
     pesan += f"▪️Admin: {len(bot.admin)}\n"
     pesan += f"▪️Talent: {len(bot.talent)}\n"
-    pesan += f"▪️Daddy sugar: {len(bot.daddy_sugar)}\n"
-    pesan += f"▪️Moans girl: {len(bot.moansgirl)}\n"
-    pesan += f"▪️Moans boy: {len(bot.moansboy)}\n"
-    pesan += f"▪️Girlfriend rent: {len(bot.gfrent)}\n"
-    pesan += f"▪️Boyfriend rent: {len(bot.bfrent)}\n"
     pesan += f"▪️Banned: {len(bot.ban)}\n\n"
     pesan += f"🔰Status bot: {'AKTIF' if bot.bot_status else 'TIDAK AKTIF'}</b>"
     await client.message.reply_text(pesan, True, enums.ParseMode.HTML)
@@ -92,7 +87,7 @@ async def list_ban_handler(helper: Helper, id_bot: int):
         pesan = "<b>Daftar banned</b>\n"
         ind = 1
         for i in db.ban:
-            pesan += "• ID: " + str(i) + " | <a href='tg://OpenMessage?user_id=" + str(i) + "'>Banned " + str(ind) + " )</a>\n"
+            pesan += "• ID: " + str(i) + " | <a href='tg://openmessage?user_id=" + str(i) + "'>( " + str(ind) + " )</a>\n"
             ind += 1
     await helper.message.reply_text(pesan, True, enums.ParseMode.HTML)
 
@@ -110,10 +105,10 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     buttons = [
         [
             InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
             ),
             InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+                "ʜᴇʟᴘ", callback_data="nsj"
             ),
         ],
     ]
@@ -145,7 +140,8 @@ InlineKeyboardButton(
     ]
     await callback_query.edit_message_text(
         f"""
- <b>silahkan kirim pesan anda menggunakan hashtag:</b> 
+ <b>silahkan kirim pesan anda menggunakan hashtag:</b>
+ 
 • <code>#mba</code> [ untuk identitas perempuan]
 • <code>#mas</code> [ untuk identitas laki-laki ]
 • <code>#spill</code> [ untuk spill masalah ]
@@ -155,7 +151,7 @@ InlineKeyboardButton(
 
 <b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk</code>
 
-<b>Pastikan lebih dari 3 kata</b>
+<b>Pastikan pesanmu lebih dari 3 kata, ya</b>
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
@@ -169,9 +165,7 @@ async def help_handler(client, msg):
     db = Database(msg.from_user.id)
     member = db.get_data_pelanggan()
 
-    pesan = "Supported commands\n" + '/status — melihat status\n'    
-    pesan += '/tf_coin — transfer coin\n'
-
+    pesan = "Supported commands\n" + '/start — kirim menfess\n'    
     if member.status == 'admin':
         pesan += '\nHanya Admin\n'
         pesan += '/tf_coin — transfer coin\n'
@@ -189,7 +183,7 @@ async def help_handler(client, msg):
         pesan += '/list_ban — melihat list banned\n'
         pesan += '/stats — melihat statistik bot\n'
         pesan += '/bot — setbot (on|off)\n'
-        
+
         pesan += '\n=====BROADCAST OWNER=====\n'
         pesan += '/broadcast — mengirim pesan broadcast kesemua user\n'
         pesan += '/admin — menambahkan admin baru\n'
@@ -205,10 +199,9 @@ async def topup_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
     keyboard = [
-        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
+        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/GJNadminbot?start=start")],
     ]
-    reply_markup = InlineKeyboardMarkup(keyboard)    
-    reply_markup = InlineKeyboardMarkup(keyboard)
+    reply_markup = InlineKeyboardMarkup(keyboard)        
     pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess ke @JAWAFES jika batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
     pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>\n\n'
     pesan += f'<b>❏ Cara top up coin Jawafess</b>\n'
@@ -218,31 +211,30 @@ async def topup_handler(client: Client, msg: types.Message):
     pesan += f'├4. kirimkan bukti pembayaran beserta kode topup\n'
     pesan += f'└ <b>BENEFIT TOPUP COIN JAWAFESS:</b> bisa kirim menfess sebanyak-banyaknya diluar batasan harian\n\n'
     pesan += f'<b>CATATAN:</b> apabila batas kirim harian belum habis. coin tidak akan berkurang'
- 
+
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
 async def cb_hapus(client, callback_query):
     user_id = callback_query.from_user.id
-    username = (
-        f'@{msg.from_user.username}'
-        if msg.from_user.username
-        else '@vxnjul'
-  )
     buttons = [
         [
         InlineKeyboardButton(
-                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJN_adminbot?start=start"
+                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJNadminbot?start=start"
  ),          
         ],
-    ]
+[      InlineKeyboardButton(
+                "ʙᴀᴄᴋ", callback_data="bck"
+            ),
+    ],
+]
     await callback_query.edit_message_text(
         f"""
-<b> Biaya menghapus postingan adalah 25 coin. Jika anda belum memiliki coin silahkan pergi ke menu top up.</b>
+<b>Biaya menghapus postingan adalah 25 coin. Jika anda belum memiliki coin silahkan pergi ke menu top up.</b>
 
 <b>❏Jika anda sudah memiliki coin, silahkan ketikkan salah satu code transfer dibawah ini:</b>
 ├<code>/tf_coin 1020381855 25</code>
 ├<code>/tf_coin 5422684990 25</code>
-├ <code>/tf_coin 1717010997 25</code>
+├<code>/tf_coin 1717010997 25</code>
 └<code>/tf_coin 6188825810 25</code>
 
 <b>Jika sudah, salin code transfer dan bukti transfer coin anda lalu pergi ke button hapus dibawah ini</b>
@@ -251,26 +243,24 @@ async def cb_hapus(client, callback_query):
      reply_markup=InlineKeyboardMarkup(buttons),
 )
 
-
 async def cb_back(client, callback_query):
     user_id = callback_query.from_user.id
-    username = (
-        f'@{msg.from_user.username}'
-        if msg.from_user.username
-        else '@vxnjul'
-  )
     buttons = [
-        [
-        InlineKeyboardButton(
-                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJN_adminbot?start=start"
+       [
+            InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
  ),          
+      InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),
         ],
     ]
     await callback_query.edit_message_text(
         f"""
-{config.start_msg}
+𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
+
+<b>silahkan baca help dan rules terlebih dahulu</b>
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
 )
-
