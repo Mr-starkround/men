@@ -48,7 +48,7 @@ class Helper():
         buttons = [
             [InlineKeyboardButton('ɢʀᴏᴜᴘ ʙᴀsᴇ', url=link_2), InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ ʙᴀsᴇ', url=link_1)],
             [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url='https://t.me/Jawafessbot?start=start')]
-        ])
+        ]
     await msg.reply_text(
         text=config.pesan_join.format(
             id=msg.from_user.id,
