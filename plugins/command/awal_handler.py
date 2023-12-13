@@ -288,19 +288,35 @@ async def cb_back(client, callback_query):
      reply_markup=InlineKeyboardMarkup(buttons),
 )
 
-
 async def cb_topup(client, callback_query):
-    user_id = callback_query.from_user.id
-    keyboard = [
-        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://telegra.ph//file/edae2f8b4a1453b8a6e52.jpg")],
+    user_id = callback_query.from_user.id 
+    username = (
+        f'@{callback_query.from_user.username}'
+        if callback_query.from_user.username
+        else '@vxnjul'
+  )
+    buttons = [
+        [
+InlineKeyboardButton(
+                "ʙᴀᴄᴋ", callback_data="bck"
+            ),
+            InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="tutup"
+            ),    
+  ],
     ]
-    reply_markup = InlineKeyboardMarkup(keyboard)        
-    pesan = f'Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
-    pesan += f'❏ Cara Membeli Coin Jawafess</b>\n'
-    pesan += f'├1. klik button top up dibawah ini\n'
-    pesan += f'├2. kirim bukti pembayaran anda <a href="https://t.me/GJNadminbot?start=start">disini</a>\n'
-    pesan += f'├3. nama [ nama telegram anda ]\n'
-    pesan += f'└4. code top up : top up {user_id}\n\n'
-    pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>'
+    await callback_query.edit_message_text(
+        f"""
+Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.
 
-    await callback_query.edit_message_text(pesan, True, reply_markup=reply_markup)
+❏ Cara Membeli Coin Jawafess
+├1. klik button top up dibawah ini
+├2. kirim bukti pembayaran anda <a href='https://t.me/GJNadminbot?start=start'>disini</a>
+├3. nama [ nama telegram anda ]
+└4. code top up : top up {user_id}
+
+coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>
+""",
+        disable_web_page_preview=True,
+     reply_markup=InlineKeyboardMarkup(buttons),
+)
