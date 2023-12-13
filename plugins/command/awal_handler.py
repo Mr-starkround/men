@@ -158,7 +158,7 @@ InlineKeyboardButton(
 )
 
 
-async def cb_close(client, callback_query, msg:types.Message):
+async def cb_close(client, callback_query):
     helper = Helper(client, msg)
     await callback_query.message.delete(message.from_user.id)
 
