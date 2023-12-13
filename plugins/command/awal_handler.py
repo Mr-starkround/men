@@ -210,15 +210,13 @@ async def topup_handler(client: Client, msg: types.Message):
         [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://telegra.ph//file/edae2f8b4a1453b8a6e52.jpg")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)        
-    pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess ke @JAWAFES jika batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
-    pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>\n\n'
-    pesan += f'<b>❏ Cara top up coin Jawafess</b>\n'
-    pesan += f'├1. Klik button top up dibawah\n'
-    pesan += f'├2. Klik QRIS\n'
-    pesan += f'├3. Lakukan pembayaran.\n'
-    pesan += f'├4. kirimkan bukti pembayaran beserta kode topup\n'
-    pesan += f'└ <b>BENEFIT TOPUP COIN JAWAFESS:</b> bisa kirim menfess sebanyak-banyaknya diluar batasan harian\n\n'
-    pesan += f'<b>CATATAN:</b> apabila batas kirim harian belum habis. coin tidak akan berkurang'
+    pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
+    pesan += f'❏ Cara Membeli Coin Jawafess</b>\n'
+    pesan += f'├1. klik button top up dibawah ini\n'
+    pesan += f'├2. kirim bukti pembayaran anda <a href='https://t.me/GJNadminbot?start=start'>disini</a>\n'
+    pesan += f'├3. nama [ nama telegram anda ]\n'
+    pesan += f'└4. code top up : top up {user_id}\n\n'
+    pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>'
 
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
