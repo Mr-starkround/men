@@ -43,10 +43,11 @@ class Helper():
         ]
         return member.status in status
 
-    async def pesan_langganan(self):
-         nn  = await self.mention
+    async def pesan_langganan(self):        
         link_1 = await self.bot.export_chat_invite_link(config.channel_1)
         link_2 = await self.bot.export_chat_invite_link(config.channel_2)
+         nn  = await self.mention
+
         buttons = [
             [InlineKeyboardButton('ɢʀᴏᴜᴘ ʙᴀsᴇ', url=link_2), InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ ʙᴀsᴇ', url=link_1)],
             [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url='https://t.me/Jawafessbot?start=start')]
