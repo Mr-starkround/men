@@ -132,7 +132,7 @@ async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id 
     username = (
         f'@{callback_query.from_user.username}'
-        if callback_qury.from_user.username
+        if callback_query.from_user.username
         else '@vxnjul'
   )
     buttons = [
