@@ -61,7 +61,7 @@ await msg.reply_text(
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
-    )
+    ),
 
     async def daftar_pelanggan(self):
         database = Database(self.user_id)
