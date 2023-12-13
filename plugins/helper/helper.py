@@ -27,6 +27,8 @@ class Helper():
         return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
     async def cek_langganan_channel(self, user_id: int):
+        nn  = self.mention
+
         if user_id == config.id_admin:
             return True
         try:
