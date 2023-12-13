@@ -46,13 +46,11 @@ class Helper():
     async def pesan_langganan(self):        
         link_1 = await self.bot.export_chat_invite_link(config.channel_1)
         link_2 = await self.bot.export_chat_invite_link(config.channel_2)
-        nn  = self.message.from_user.mention
-
         markup = [
             [InlineKeyboardButton('ɢʀᴏᴜᴘ ʙᴀsᴇ', url=link_2), InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ ʙᴀsᴇ', url=link_1)],
             [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url='https://t.me/Jawafessbot?start=start')]
         ]
-          await self.bot.send_message(self.user_id, nn, config.pesan_join, reply_to_message_id=self.message.id, reply_markup=markup)
+          await self.bot.send_message(self.user_id, config.pesan_join, reply_to_message_id=self.message.id, reply_markup=markup)
 
     async def daftar_pelanggan(self):
         database = Database(self.user_id)
