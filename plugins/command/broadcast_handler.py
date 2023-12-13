@@ -62,3 +62,13 @@ Gagal terkirim: {str(gagal)}"""
     await msg.reply(text)
     await msg.delete()
     await message.delete()
+
+async def cb_close(client: Client, query: CallbackQuery):
+    try:
+        await query.message.reply_to_message.delete()
+    except:
+        pass
+    try:
+        await query.message.delete()
+    except:
+        pass
