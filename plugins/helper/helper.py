@@ -53,7 +53,7 @@ class Helper():
             [InlineKeyboardButton('Coba lagi', url='https://t.me/{self.bot.username}?start=start')]
         ])
         await self.bot.send_message(
-           text={config.pesan_join.format(    first=message.from_user.first_name,
+           text=config.pesan_join.format(    first=message.from_user.first_name,
                 last=message.from_user.last_name,
                 username=f"@{message.from_user.username}"
                 if message.from_user.username
