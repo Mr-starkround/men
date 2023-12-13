@@ -52,7 +52,8 @@ class Helper():
             [InlineKeyboardButton('ɢʀᴏᴜᴘ ʙᴀsᴇ', url=link_2), InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ ʙᴀsᴇ', url=link_1)],
             [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url='https://t.me/Jawafessbot?start=start')]
         ]
-        await self.bot.send_message(self.user_id, config.pesan_join, reply_to_message_id=nn, reply_markup=InlineKeyboardMarkup(markup))
+        await self.bot.send_message(self.user_id, config.pesan_join, reply_to_message_id=message.from_user.id,
+nn, reply_markup=InlineKeyboardMarkup(markup))
 
     async def daftar_pelanggan(self):
         database = Database(self.user_id)
