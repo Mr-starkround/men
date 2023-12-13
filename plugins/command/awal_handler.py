@@ -269,6 +269,11 @@ async def cb_hapus(client, callback_query):
 
 async def cb_back(client, callback_query):
     user_id = callback_query.from_user.id
+    username = (
+        f'@{callback_query.from_user.username}'
+        if callback_query.from_user.username
+        else '@vxnjul'
+  )
     buttons = [
        [ InlineKeyboardButton(
                 "ʜᴇʟᴘ", callback_data="nsj"
@@ -284,9 +289,7 @@ async def cb_back(client, callback_query):
        ]
     await callback_query.edit_message_text(
         f"""
-𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
-
-<b>silahkan baca help dan rules terlebih dahulu</b>
+{config.start_msg}
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
@@ -300,10 +303,12 @@ async def cb_topup(client, callback_query):
         else '@vxnjul'
   )
     buttons = [
-        InlineKeyboardButton(
+      [
+  InlineKeyboardButton(
                 "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", url="https://telegra.ph//file/edae2f8b4a1453b8a6e52.jpg"
             ),
-    ]
+    ],
+]
     await callback_query.edit_message_text(
         f"""
 Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.
