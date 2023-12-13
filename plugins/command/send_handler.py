@@ -65,8 +65,15 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
         link = await get_link()                    
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id, link=link + str(kirim.id))
         keyboard = [
-            [InlineKeyboardButton(
-                f"👀ʟɪʜᴀᴛ", url=link + str({kirim.id})),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
+            [
+                InlineKeyboardButton(
+                    f"👀ʟɪʜᴀᴛ",
+                url=link + str({kirim.id})),
+                ),
+                InlineKeyboardButton(
+                    "🗑ʜᴀᴘᴜs",
+                    callback_data="hps")],
+                ),
         ]
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
