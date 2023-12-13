@@ -82,6 +82,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
  
        disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
+ )
     else:
         await msg.reply('media yang didukung photo, video dan voice')
 
