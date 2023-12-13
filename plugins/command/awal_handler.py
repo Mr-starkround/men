@@ -29,7 +29,12 @@ InlineKeyboardButton(
                 "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
             ),
         ],
-    ]
+  [            InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="tutup"
+            ),    
+  ],
+
+  ]
     await msg.reply_text(
         text=config.start_msg.format(
             id=msg.from_user.id,
@@ -289,7 +294,11 @@ async def cb_back(client, callback_query):
        ]
     await callback_query.edit_message_text(
         f"""
-{config.start_msg}
+❏ Haii {mention}
+
+𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
+
+silahkan baca help dan rules terlebih dahulu.
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
