@@ -175,3 +175,5 @@ async def on_callback_query(client: Client, query: CallbackQuery):
             await query.answer('Ditolak, kamu tidak ada akses', True)
     elif query.data == 'ya_confirm':
         await broadcast_ya(client, query)
+    elif query.data == 'tutup':
+        await close_cbb(client, query)
