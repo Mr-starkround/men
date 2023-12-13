@@ -46,7 +46,7 @@ class Helper():
     async def pesan_langganan(self):        
         link_1 = await self.bot.export_chat_invite_link(config.channel_1)
         link_2 = await self.bot.export_chat_invite_link(config.channel_2)
-         nn  = await self.mention
+        nn  = self.message.from_user.mention
 
         buttons = [
             [InlineKeyboardButton('ɢʀᴏᴜᴘ ʙᴀsᴇ', url=link_2), InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ ʙᴀsᴇ', url=link_1)],
