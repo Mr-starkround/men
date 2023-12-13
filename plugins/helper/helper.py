@@ -62,6 +62,7 @@ await msg.reply_text(
         reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
+
     async def daftar_pelanggan(self):
         database = Database(self.user_id)
 
