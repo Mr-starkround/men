@@ -51,9 +51,9 @@ class Helper():
         ]
 await msg.reply_text(
         text=config.pesan_join.format(
-            id=msg.from_user.id,
-            mention=mention,
-            username=username,           
+            id=self_user.id,
+            mention=self.mention
+            username=self.username,           
         ),
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
