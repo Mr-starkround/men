@@ -219,7 +219,7 @@ async def topup_handler(client: Client, msg: types.Message):
     pesan += f'└4. code top up : top up {user_id}\n\n'
     pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>'
 
-    await msg.reply(self.user_id, self.mention, pesan, enums.ParseMode.HTML,        disable_web_page_preview=True,reply_markup=reply_markup)
+    await msg.reply(user_id, mention, pesan, enums.ParseMode.HTML,        disable_web_page_preview=True,reply_markup=reply_markup)
 
 async def cb_hapus(client, callback_query):
     user_id = callback_query.from_user.id
@@ -279,7 +279,7 @@ async def cb_topup(client, callback_query):
         [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://telegra.ph//file/edae2f8b4a1453b8a6e52.jpg")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)        
-    pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
+    pesan = f'Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
     pesan += f'❏ Cara Membeli Coin Jawafess</b>\n'
     pesan += f'├1. klik button top up dibawah ini\n'
     pesan += f'├2. kirim bukti pembayaran anda <a href="https://t.me/GJNadminbot?start=start">disini</a>\n'
