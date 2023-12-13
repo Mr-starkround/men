@@ -60,9 +60,7 @@ class Helper():
                 else None,
                 mention=message.from_user.mention,
                 id=message.from_user.id,
-            ),           
-                 disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),
+            ),       disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
 
