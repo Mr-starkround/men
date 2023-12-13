@@ -130,7 +130,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
 
 async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id 
-    mention = callback_query.from_user.mention
+    mention = <a href=tg://user?id={callback_query.from_user.id}>{callback_query.from_user.first_name} {callback_query.from_user.last_name or ''}</a>
     buttons = [
         [
 InlineKeyboardButton(
