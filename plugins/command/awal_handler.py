@@ -160,7 +160,7 @@ InlineKeyboardButton(
 
 async def cb_close(client, callback_query, msg:types.Message):
     helper = Helper(client, msg)
-    await callback_query.message.delete(msg.from_user.id)
+    await callback_query.message.delete(message.from_user.id)
 
 async def help_handler(client, msg):
     db = Database(msg.from_user.id)
