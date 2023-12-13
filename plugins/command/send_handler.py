@@ -42,7 +42,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
     keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/c/{anu}/{kirim.id}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
+ [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'{link + str(kirim.id)}'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
 ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     if msg.text or msg.photo or msg.video or msg.voice:
@@ -66,9 +66,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                 else:
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
-        link = await get_link()     
-         anu = str(config.channel_1).split('-100')[1]
-    return f"https://t.me/c/{anu}/"         
+        link = await get_link()                    
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id, link=link + str(kirim.id))
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
