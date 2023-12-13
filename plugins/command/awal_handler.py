@@ -219,7 +219,7 @@ async def topup_handler(client: Client, msg: types.Message):
     pesan += f'└4. code top up : top up {user_id}\n\n'
     pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>'
 
-    await msg.reply(user_id, mention, pesan, enums.ParseMode.HTML,        disable_web_page_preview=True,reply_markup=reply_markup)
+    await msg.reply(user_id, mention, pesan, disable_web_page_preview=True,reply_markup=reply_markup)
 
 async def cb_hapus(client, callback_query):
     user_id = callback_query.from_user.id
