@@ -41,9 +41,6 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
-    keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=link + str(kirim.id)),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
-]
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
@@ -67,6 +64,10 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
 
         link = await get_link()                    
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id, link=link + str(kirim.id))
+        keyboard = [
+            [InlineKeyboardButton(
+                "👀ʟɪʜᴀᴛ", url=link + str(kirim.id)),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
+        ]
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", quote=True, enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(keyboard))
