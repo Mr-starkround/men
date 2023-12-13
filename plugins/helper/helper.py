@@ -27,8 +27,7 @@ class Helper():
         return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
     async def cek_langganan_channel(self, user_id: int):
-        nn  = self.mention
-
+        
         if user_id == config.id_admin:
             return True
         try:
@@ -45,6 +44,7 @@ class Helper():
         return member.status in status
 
     async def pesan_langganan(self):
+         nn  = await self.mention
         link_1 = await self.bot.export_chat_invite_link(config.channel_1)
         link_2 = await self.bot.export_chat_invite_link(config.channel_2)
         buttons = [
