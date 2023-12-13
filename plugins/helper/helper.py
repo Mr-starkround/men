@@ -52,7 +52,7 @@ class Helper():
             [InlineKeyboardButton('Channel base', url=link_2), InlineKeyboardButton('Group base', url=link_1)],
             [InlineKeyboardButton('Coba lagi', url='https://t.me/{self.bot.username}?start=start')]
         ])
-            await msg.reply_text(
+            await self.bot.send_message(
         text=config.pesan_join.format(
             id=msg.from_user.id,
             mention=mention,
