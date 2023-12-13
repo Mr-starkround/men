@@ -103,15 +103,15 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     )
     mention = msg.from_user.mention
     buttons = [
-        [
-            InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
-            ),
-            InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
+        [InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"),
+        InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"),
         ],
-    ]
+   [ InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="tutup"),
+   ],
+        ]
     await msg.reply_text(
         text=config.gagalkirim_msg.format(
             id=msg.from_user.id,
@@ -134,7 +134,7 @@ InlineKeyboardButton(
                 "ʙᴀᴄᴋ", callback_data="bck"
             ),
             InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="tidak_confirm"
+                "ᴄʟᴏsᴇ", callback_data="tutup"
             ),    
   ],
     ]
