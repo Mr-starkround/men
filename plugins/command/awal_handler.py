@@ -23,10 +23,10 @@ async def start_handler(client: Client, msg: types.Message):
     buttons = [
         [                       
             InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+                "ʜᴇʟᴘ", callback_data="nsj"
             ),
 InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
             ),
         ],
     ]
@@ -48,7 +48,7 @@ async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
     keyboard = [
-        [InlineKeyboardButton(                "cara ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ", callback_data="tpp")],
+        [InlineKeyboardButton(                "ᴄᴀʀᴀ ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", callback_data="tpp")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)        
     pesan = '<b>❏ User Info:</b>\n'
@@ -60,7 +60,7 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
     pesan += f'└<b>Bergabung :</b> {db.sign_up}\n\n'
-    pesan += f'<b>Code topup anda</b> » <code>jawafess {db.id} </code>'
+    pesan += f'<b>Code topup anda</b> » <code>fess {db.id} </code>'
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
 async def statistik_handler(client: Helper, id_bot: int):
@@ -111,9 +111,9 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     mention = msg.from_user.mention
     buttons = [
         [InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"),
-        InlineKeyboardButton(
                 "ʜᴇʟᴘ", callback_data="nsj"),
+InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"),
         ],
    [ InlineKeyboardButton(
                 "ᴄʟᴏsᴇ", callback_data="tutup"),
@@ -197,7 +197,7 @@ InlineKeyboardButton(
 
 <b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk {username} </code>
 
-<b>Pastikan pesanmu lebih dari 3 kata, ya</b>
+<i>Pastikan pesanmu lebih dari 3 kata, ya</i>
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
@@ -270,15 +270,18 @@ async def cb_hapus(client, callback_query):
 async def cb_back(client, callback_query):
     user_id = callback_query.from_user.id
     buttons = [
-       [
+       [ InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),
             InlineKeyboardButton(
                 "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
  ),          
-      InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
-        ],
-    ]
+      ],
+[           InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="tutup"
+            ),    
+  ],
+       ]
     await callback_query.edit_message_text(
         f"""
 𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
@@ -297,14 +300,9 @@ async def cb_topup(client, callback_query):
         else '@vxnjul'
   )
     buttons = [
-        [
-InlineKeyboardButton(
-                "ʙᴀᴄᴋ", callback_data="bck"
+        InlineKeyboardButton(
+                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", url="https://telegra.ph//file/edae2f8b4a1453b8a6e52.jpg"
             ),
-            InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="tutup"
-            ),    
-  ],
     ]
     await callback_query.edit_message_text(
         f"""
@@ -314,7 +312,7 @@ Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5
 ├1. klik button top up dibawah ini
 ├2. kirim bukti pembayaran anda <a href='https://t.me/GJNadminbot?start=start'>disini</a>
 ├3. nama [ nama telegram anda ]
-└4. code topup anda: <code>jawafess {user_id}</code>
+└4. code topup anda: <code>fess {user_id}</code>
 
 coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>
 """,
