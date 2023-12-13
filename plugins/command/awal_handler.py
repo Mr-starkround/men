@@ -130,7 +130,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
 
 async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id 
-    mention = <a href=tg://user?id={callback_query.from_user.id}>{callback_query.from_user.first_name} {callback_query.from_user.last_name or ''}</a>
+    mentions = callback_query.from_user.mention
     buttons = [
         [
 InlineKeyboardButton(
@@ -152,7 +152,7 @@ InlineKeyboardButton(
 • <code>#story</code> [ untuk berbagi cerita/curhat ]
 • <code>#pap</code> [ khusus media foto/video ] 
 
-<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk {mention} </code>
+<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk {mentions} </code>
 
 <b>Pastikan pesanmu lebih dari 3 kata, ya</b>
 """,
