@@ -52,7 +52,7 @@ class Helper():
 await msg.reply_text(
         text=config.pesan_join.format(
             id=self_user.id,
-            mention=self.mention
+            mention=self.mention,
             username=self.username,           
         ),
         disable_web_page_preview=True,
