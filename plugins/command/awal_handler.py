@@ -129,7 +129,8 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     )
 
 async def cb_help(client, callback_query):
-    user_mention = callback_query.from_user.mention
+    user_id = callback_query.from_user.id 
+    mention = callback_query.from_user.mention
     buttons = [
         [
 InlineKeyboardButton(
