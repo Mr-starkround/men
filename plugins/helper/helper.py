@@ -40,19 +40,16 @@ class Helper():
             enums.ChatMemberStatus.MEMBER,
             enums.ChatMemberStatus.ADMINISTRATOR
         ]
-        if not member.status in status:
-            return False
-        else:
-            return True
+        return member.status in status
 
     async def pesan_langganan(self):
         link_1 = await self.bot.export_chat_invite_link(config.channel_1)
         link_2 = await self.bot.export_chat_invite_link(config.channel_2)
-        buttons = InlineKeyboardMarkup([
-            [InlineKeyboardButton('Channel base', url=link_2), InlineKeyboardButton('Group base', url=link_1)],
-            [InlineKeyboardButton('Coba lagi', url='https://t.me/{self.bot.username}?start=start')]
+        markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton('ɢʀᴏᴜᴘ ʙᴀsᴇ', url=link_2), InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ ʙᴀsᴇ', url=link_1)],
+            [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url='https://t.me/Jawafessbot?start=start')]
         ])
-await self.bot.send_message(self.user_id, config.pesan_join, reply_to_message_id=self.message.id, reply_markup=markup)
+        await self.bot.send_message(self.user_id, config.pesan_join, reply_to_message_id=self.message.id, reply_markup=markup)
 
     async def daftar_pelanggan(self):
         database = Database(self.user_id)
@@ -63,7 +60,7 @@ await self.bot.send_message(self.user_id, config.pesan_join, reply_to_message_id
         coin = f"0_{str(self.user_id)}"
         if self.user_id == config.id_admin:
             status = 'owner'
-            coin = f"99999999999999999_{str(self.user_id)}"
+            coin = f"9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999_{str(self.user_id)}"
 
         nama = await self.escapeHTML(nama)
         data = {
@@ -85,7 +82,7 @@ await self.bot.send_message(self.user_id, config.pesan_join, reply_to_message_id
             pesan += f"├ Username -: {self.username}\n"
             pesan += f"├ Mention -: {self.mention}\n"
             pesan += f"├ Kirim pesan -: <a href='tg://openmessage?user_id={self.user_id}'>{await self.escapeHTML(self.fullname)}</a>\n"
-            pesan += f"├ Cek Pesan : {link}\n"
+            pesan += f"├ Cek Pesan : <a href='{link}'>Lihat pesan</a>\n"
             pesan += f"└ Waktu -: {self.get_time().full_time}"
         elif type == 'log_daftar':
             pesan = "<b>📊DATA USER BERHASIL DITAMBAHKAN DIDATABASE</b>\n"
