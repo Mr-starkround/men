@@ -48,7 +48,7 @@ class Helper():
     async def pesan_langganan(self):
         link_1 = await self.bot.export_chat_invite_link(config.channel_1)
         link_2 = await self.bot.export_chat_invite_link(config.channel_2)
-        markup = InlineKeyboardMarkup([
+        buttons = InlineKeyboardMarkup([
             [InlineKeyboardButton('Channel base', url=link_2), InlineKeyboardButton('Group base', url=link_1)],
             [InlineKeyboardButton('Coba lagi', url='https://t.me/{self.bot.username}?start=start')]
         ])
@@ -61,9 +61,10 @@ class Helper():
                 mention=message.from_user.mention,
                 id=message.from_user.id,
             ),           
-            disable_web_page_preview=True,
-            quote=True,
-       reply_markup=markup)
+                 disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(buttons),
+        quote=True
+    )
 
     async def daftar_pelanggan(self):
         database = Database(self.user_id)
