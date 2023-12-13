@@ -134,7 +134,7 @@ InlineKeyboardButton(
                 "ʙᴀᴄᴋ", callback_data="bck"
             ),
             InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="ttp"
+                "ᴄʟᴏsᴇ", callback_data="tidak_confirm"
             ),    
   ],
     ]
