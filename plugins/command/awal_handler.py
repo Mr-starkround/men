@@ -132,6 +132,40 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
         quote=True
     )
 
+async def topup_handler(client: Client, msg: types.Message):
+    helper = Helper(client, msg)
+    first = msg.from_user.first_name
+    last = msg.from_user.last_name
+    fullname = f'{first} {last}' if last else first
+    username = (
+        f'@{msg.from_user.username}'
+        if msg.from_user.username
+        else '@vxnjul'
+    )
+    mention = msg.from_user.mention
+    buttons = [
+        [                       
+            InlineKeyboardButton(
+                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", url="https://telegra.ph//file/edae2f8b4a1453b8a6e52.jpg"        
+            ),
+        ],
+    ]
+    await msg.reply_text(
+        text=config.topup_msg.format(
+            id=msg.from_user.id,
+            mention=mention,
+            username=username,
+            first_name=await helper.escapeHTML(first),
+            last_name=await helper.escapeHTML(last),
+            fullname=await helper.escapeHTML(fullname),
+        ),
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(buttons),
+        quote=True
+    )
+
+
+
 async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id 
     username = (
@@ -202,24 +236,6 @@ async def help_handler(client, msg):
         pesan += '/unban — unban user\n'
 
     await msg.reply(pesan, True, enums.ParseMode.HTML)
-
-async def topup_handler(client: Client, msg: types.Message):
-    helper = Helper(client, msg)
-    mention = msg.from_user.mention
-    user_id = msg.from_user.id 
-    keyboard = [
-        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://telegra.ph//file/edae2f8b4a1453b8a6e52.jpg")],
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)        
-    pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
-    pesan += f'❏ Cara Membeli Coin Jawafess</b>\n'
-    pesan += f'├1. klik button top up dibawah ini\n'
-    pesan += f'├2. kirim bukti pembayaran anda <a href="https://t.me/GJNadminbot?start=start">disini</a>\n'
-    pesan += f'├3. nama [ nama telegram anda ]\n'
-    pesan += f'└4. code top up : top up {user_id}\n\n'
-    pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>'
-
-    await msg.reply(user_id, mention, pesan, disable_web_page_preview=True,reply_markup=reply_markup)
 
 async def cb_hapus(client, callback_query):
     user_id = callback_query.from_user.id
