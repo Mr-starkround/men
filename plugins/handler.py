@@ -157,7 +157,9 @@ async def on_callback_query(client: Client, query: CallbackQuery):
     if query.data == 'photo':
         await photo_handler_inline(client, query)
     elif query.data == 'video':
-        await video_handler_inline(client, query)
+        await video_handler_inline(client, query)      
+    elif query.data == 'tpp':     
+        await cb_topup(client, query)  
     elif query.data == 'bck':
         await cb_back(client, query)
     elif query.data == 'hps':
@@ -177,6 +179,3 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await broadcast_ya(client, query)
     elif query.data == 'tutup':
         await close_cbb(client, query)
-        await cb_topup(client, query)
-    elif query.data == 'tpp':
-        
