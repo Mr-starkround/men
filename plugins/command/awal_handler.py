@@ -26,7 +26,7 @@ async def start_handler(client: Client, msg: types.Message):
                 "ʜᴇʟᴘ", callback_data="nsj"
             ),
 InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/27528"
             ),
         ],
   [            InlineKeyboardButton(
@@ -118,7 +118,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
         [InlineKeyboardButton(
                 "ʜᴇʟᴘ", callback_data="nsj"),
 InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"),
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/27528"),
         ],
    [ InlineKeyboardButton(
                 "ᴄʟᴏsᴇ", callback_data="tutup"),
@@ -285,7 +285,7 @@ async def cb_back(client, callback_query):
                 "ʜᴇʟᴘ", callback_data="nsj"
             ),
             InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/27528"
  ),          
       ],
 [           InlineKeyboardButton(
