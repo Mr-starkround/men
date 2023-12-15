@@ -166,4 +166,5 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
 
        text = f"""<b>Broadcast selesai</b>"""
 
-        await query.message.delete(text, hapus)
+       await query.message.delete(text, hapus)
+   
