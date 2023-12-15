@@ -150,4 +150,4 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
      return   
        hapus = link + str(kirim.id))
        await query.message.reply_to_message.delete()
-        await query.message.delete(text, 
+        await query.message.delete(text, hapus)
