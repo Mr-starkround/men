@@ -146,6 +146,7 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
 
     async def hapus_pesan(client: Client, query: CallbackQuery):
          link = await get_link()
+  try:
         await query.message.reply_to_message.delete()
     except:
         pass
