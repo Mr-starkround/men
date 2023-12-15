@@ -1,4 +1,4 @@
-import config
+import config, sys, os, requests
 import re
 
 from pyrogram import Client, types, enums
