@@ -152,6 +152,9 @@ async def hapus_pesan(client: Client, query: CallbackQuery):
     except:
         pass
     try:
-        await query.message.delete(link - str(kirim.id))
+        await query.message.delete()
+    except:
+        pass
+        await query.message.delete(link - str(kirim.id)
     except:
         pass
