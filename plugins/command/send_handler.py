@@ -90,11 +90,6 @@ async def get_link():
     anu = str(config.channel_1).split('-100')[1]
     return f"https://t.me/c/{anu}/"
 
-async def get_hapus():
-    url = f"https://api.telegram.org/bot{config.bot_token}/deleteMessage?chat_id={config.channel_1}&kirim.id={kirim["result"]["kirim.id"] + 1}&parse_mode=HTML')"
-
-    return f"{url}"
-
 async def transfer_coin_handler(client: Client, msg: types.Message):
     if re.search(r"^[\/]tf_coin(\s|\n)*$", msg.text or msg.caption):
         err = "<i>perintah salah /tf_coin [jmlh_coin]</i>" if msg.reply_to_message else "<i>perintah salah /tf_coin [id_user] [jmlh_coin]</i>"
