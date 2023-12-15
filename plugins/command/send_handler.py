@@ -93,7 +93,7 @@ async def get_link():
     return f"https://t.me/c/{anu}/"
 
 async def get_hapus():
-    url = f'https://api.telegram.org/bot{config.bot_token}'
+    url = https://api.telegram.org/bot{config.bot_token}
     return f"{url}"
 
 async def transfer_coin_handler(client: Client, msg: types.Message):
