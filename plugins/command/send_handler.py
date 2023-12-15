@@ -150,9 +150,6 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
     
-     if msg.from_user.id
-    return await msg.reply.delete()  
-
         menfess = db_user.menfess
         all_menfess = db_user.all_menfess
         coin = db_user.coin
