@@ -148,10 +148,6 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
 
 async def hapus_pesan(client: Client, query: CallbackQuery):        
                         
-        await client.delete_messages(msg.chat.id, msg.id)
-                    except:
-        pass
-
     try:
         await query.message.reply_to_message.delete()
     except:
@@ -159,4 +155,7 @@ async def hapus_pesan(client: Client, query: CallbackQuery):
     try:
         await query.message.delete()
     except:
+        pass
+       await client.delete_messages(msg.chat.id, msg.id)
+                    except:
         pass
