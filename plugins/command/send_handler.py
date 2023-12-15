@@ -147,9 +147,7 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
     async def hapus_pesan(client: Client, msg: Message, query: CallbackQuery):   
          msg = query.message
        db = Database(msg.from_user.id)
-    helper = Helper(client, msg)
-    user = db.get_data_pelanggan()   
-     
+    
      await query.message.reply_to_message.delete()    
        link = await get_link()     
        hapus = link + str(kirim.id))
