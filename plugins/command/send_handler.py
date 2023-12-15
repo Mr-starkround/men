@@ -65,7 +65,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
         link = await get_link()
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
        url = f'https://api.telegram.org/bot{config.bot_token}'
-       ah = requests.post(f'{url}/deleteMessage?chat_id={config.channel_1}&kirim.id={kirim["result"]["kirim.id"] + 1}&parse_mode=HTML')
+       hapus = requests.post(f'{url}/deleteMessage?chat_id={config.channel_1}&kirim.id={kirim["result"]["kirim.id"] + 1}&parse_mode=HTML')
         
         buttons = [
             [
