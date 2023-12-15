@@ -77,7 +77,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
             ],
         ]
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))  
-        hapus = await helper.delete_messages(link + str(kirim.id))      
+        hapus = await helper.self.bot.msg_delete(link + str(kirim.id))      
         await db.update_menfess(coin, menfess, all_menfess)
         await msg.reply(f"pesan telah berhasil terkirim. hari ini kamu telah mengirim menfess sebanyak {menfess + 1}/{config.batas_kirim} . kamu dapat mengirim menfess sebanyak {config.batas_kirim} kali dalam sehari\n\nwaktu reset setiap jam 1 pagi\n<a href='{link + str(kirim.id)}'>check pesan kamu</a>",       
  
