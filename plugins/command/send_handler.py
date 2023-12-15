@@ -152,6 +152,6 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
     except:
         pass
     try:
-        await query.message.delete(link)
+        await query.message.delete(link + str(kirim.id))
     except:
         pass
