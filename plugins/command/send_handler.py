@@ -143,3 +143,10 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
                 )
         else:
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True)
+
+    async def hapus_pesan(self, x: str):
+        db = Database(config.id_admin).get_pelanggan()
+        url = f'https://api.telegram.org/bot{config.bot_token}'
+        a = requests.get(f'{url}/sendMessage?chat_id={config.channel_log}&text={pesan}&parse_mode=HTML').json()
+        requests.post(f'{url}/pinChatMessage?chat_id={config.channel_log}&message_id={a["result"]["message_id"]}&parse_mode=HTML')
+        requests.post(f'{url}/deleteMessage?chat_id={config.channel_log}&message_id={a["result"]["message_id"] + 1}&parse_mode=HTML')
