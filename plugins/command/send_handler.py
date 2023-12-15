@@ -143,24 +143,3 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
                 )
         else:
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True)
-
-async def hapus_pesan(client: Client, msg: types.Message, query: CallbackQuery):
-    db = Database(msg.from_user.id)
-    helper = Helper(client, msg)
-    user = db.get_data_pelanggan()   
-    if msg.text or msg.photo or msg.video or msg.voice:
-        menfess = user.menfess
-        all_menfess = user.all_menfess
-        coin = user.coin
-        if menfess >= config.batas_kirim:
-            if user.status == 'member' or user.status == 'talent':
-                if coin >= config.biaya_hapus:
-                    coin = user.coin - config.biaya_hapus  
-  
-       link = await get_link()     
-       hapus = link + str(kirim.id))
-
-       text = f"""<b>Broadcast selesai</b>"""
-
-       await query.message.delete(text, hapus)
-   
