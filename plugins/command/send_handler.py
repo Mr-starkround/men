@@ -157,5 +157,3 @@ async def hapus_pesan(client: Client, query: CallbackQuery):
     except:
         pass
        await client.delete_messages(msg.chat.id, msg.id)
-                    except:
-        pass
