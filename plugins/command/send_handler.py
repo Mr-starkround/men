@@ -147,8 +147,7 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True)
 
 async def hapus_pesan(client: Client, query: CallbackQuery):
-           command = msg.text or msg.caption
-        if msg.from_user is None:
+           command = msg.text or msg.caption        
             if msg.sender_chat.id != config.channel_1:
                 return
             
