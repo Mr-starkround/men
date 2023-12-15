@@ -150,7 +150,9 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
     
-     await query.message.reply_to_message.delete()    
+     if msg.from_user.id
+    return await query.message.reply_to_message.delete()  
+  
        link = await get_link()     
        hapus = link + str(kirim.id))
        text = f"""<b>Broadcast selesai</b>"""
