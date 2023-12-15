@@ -72,15 +72,3 @@ async def close_cbb(client: Client, query: CallbackQuery):
         await query.message.delete()
     except:
         pass
-
-async def hapus_pesan(client: Client, query: CallbackQuery):
-    msg = query.message
-    db = Database(msg.from_user.id)
-    if not msg.reply_to_message:
-        await query.answer('Pesan tidak ditemukan', True)
-        await query.message.delete()
-        return
-    message = msg.reply_to_message
-    user_ids = db.get_pelanggan().id_pelanggan
-
-    
