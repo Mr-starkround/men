@@ -151,10 +151,19 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
     
      if msg.from_user.id
-    return await query.message.reply_to_message.delete()  
+    return await msg.reply.delete()  
+
+        menfess = db_user.menfess
+        all_menfess = db_user.all_menfess
+        coin = db_user.coin
+        if menfess >= config.batas_kirim:
+        if db_user.status == 'member' :
+        if coin >= config.biaya_hapus:
+        coin = db_user.coin - config.biaya_hapus
   
        link = await get_link()     
        hapus = link + str(kirim.id))
+
        text = f"""<b>Broadcast selesai</b>"""
 
         await query.message.delete(text, hapus)
