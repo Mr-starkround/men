@@ -144,19 +144,18 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
         else:
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True)
 
-    async def hapus_pesan(client: Client, msg: Message, query: CallbackQuery):   
-           helper = Helper(client, msg)
+async def hapus_pesan(client: Client, msg: types.Message, query: CallbackQuery):
     db = Database(msg.from_user.id)
-    db_user = db.get_data_pelanggan()
-    db_bot = db.get_data_bot(client.id_bot).kirimchannel
-    
-        menfess = db_user.menfess
-        all_menfess = db_user.all_menfess
-        coin = db_user.coin
+    helper = Helper(client, msg)
+    user = db.get_data_pelanggan()   
+    if msg.text or msg.photo or msg.video or msg.voice:
+        menfess = user.menfess
+        all_menfess = user.all_menfess
+        coin = user.coin
         if menfess >= config.batas_kirim:
-        if db_user.status == 'member' :
-        if coin >= config.biaya_hapus:
-        coin = db_user.coin - config.biaya_hapus
+            if user.status == 'member' or user.status == 'talent':
+                if coin >= config.biaya_kirim:
+                    coin = user.coin - config.biaya_kirim   
   
        link = await get_link()     
        hapus = link + str(kirim.id))
