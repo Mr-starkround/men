@@ -173,4 +173,3 @@ async def hapus_pesan(client: Client, query: CallbackQuery):
         await query.message.delete()
     except:
         pass
-    try:
