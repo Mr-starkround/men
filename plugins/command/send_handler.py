@@ -63,9 +63,10 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
         link = await get_link()
+        bot = await get_hapus()
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
        
-       hapus = requests.post(f'{url}/deleteMessage?chat_id={config.channel_1}&kirim.id={kirim["result"]["kirim.id"] + 1}&parse_mode=HTML')
+       hapus = client.delete_message(url)
         
         buttons = [
             [
@@ -93,7 +94,8 @@ async def get_link():
     return f"https://t.me/c/{anu}/"
 
 async def get_hapus():
-    url = https://api.telegram.org/bot{config.bot_token}
+    url = f"https://api.telegram.org/bot{config.bot_token}/deleteMessage?chat_id={config.channel_1}&kirim.id={kirim["result"]["kirim.id"] + 1}&parse_mode=HTML')"
+
     return f"{url}"
 
 async def transfer_coin_handler(client: Client, msg: types.Message):
