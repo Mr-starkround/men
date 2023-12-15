@@ -154,8 +154,8 @@ async def hapus_pesan(client: Client, msg: types.Message, query: CallbackQuery):
         coin = user.coin
         if menfess >= config.batas_kirim:
             if user.status == 'member' or user.status == 'talent':
-                if coin >= config.biaya_kirim:
-                    coin = user.coin - config.biaya_kirim   
+                if coin >= config.biaya_hapus:
+                    coin = user.coin - config.biaya_hapus  
   
        link = await get_link()     
        hapus = link + str(kirim.id))
