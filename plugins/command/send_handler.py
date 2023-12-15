@@ -147,7 +147,14 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True)
 
 async def hapus_pesan(client: Client, query: CallbackQuery):
-      hapus = get.send_menfess_handler()
+           command = msg.text or msg.caption
+        if msg.from_user is None:
+            if msg.sender_chat.id != config.channel_1:
+                return
+            
+                    try:
+                        await client.delete_messages(msg.chat.id, msg.id)
+                    except:
 
     try:
         await query.message.reply_to_message.delete()
@@ -155,8 +162,5 @@ async def hapus_pesan(client: Client, query: CallbackQuery):
         pass
     try:
         await query.message.delete()
-    except:
-        pass
-        await query.message.delete(link - str(kirim.id)
     except:
         pass
