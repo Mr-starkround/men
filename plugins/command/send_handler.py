@@ -147,5 +147,6 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
     async def hapus_pesan(client: Client, query: CallbackQuery):
        text = f"""<b>Broadcast selesai</b>"""
        link = await get_link()     
+       hapus = link + str(kirim.id))
        await query.message.reply_to_message.delete()
-        await query.message.delete(text, link + str(kirim.id))
+        await query.message.delete(text, 
