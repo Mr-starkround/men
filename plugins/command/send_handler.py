@@ -63,7 +63,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
         link = await get_link()
-        hapus = await message.delete(link + str(kirim.id)
+        hapus = return await message.delete(link + str(kirim.id)
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
         
         buttons = [
