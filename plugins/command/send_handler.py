@@ -149,5 +149,3 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
        link = await get_link()     
        await query.message.reply_to_message.delete()
         await query.message.delete(text, link + str(kirim.id))
-    except:
-        pass
