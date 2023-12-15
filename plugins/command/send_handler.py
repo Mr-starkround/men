@@ -145,15 +145,13 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True)
 
     async def hapus_pesan(client: Client, query: CallbackQuery):
-    try:
          link = await get_link()
+         text = f"""<b>Broadcast selesai</b>
+       
+    await query.message.reply_to_message.delete()
     except:
         pass
     try:
-        await query.message.reply_to_message.delete()
-    except:
-        pass
-    try:
-        await query.message.delete(link + str(kirim.id))
+        await query.message.delete(text, link + str(kirim.id))
     except:
         pass
