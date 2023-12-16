@@ -146,7 +146,7 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
         else:
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True)
 
-async def hapus_pesan(client: Client, query: CallbackQuery):     
+async def hapus_pesan(client: Client, msg: types.Message, query: CallbackQuery):     
     if msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
         if msg.from_user is None:
