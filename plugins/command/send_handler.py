@@ -153,6 +153,17 @@ async def hapus_pesan(client: Client, query: CallbackQuery):
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()   
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
+
+        menfess = db_user.menfess
+        all_menfess = db_user.all_menfess
+        coin = db_user.coin
+        if menfess >= config.batas_kirim:
+            if db_user.status == 'member' or db_user.status == 'talent':
+                if coin >= config.biaya_hapus:
+                    coin = db_user.coin - config.biaya_hapus
+                else:
+                    return await msg.reply(f'koin kureng', True, enums.ParseMode.HTML)
+
                
         link = await get_link()                   
         hapus = await client.delete_message(config.channel_1, msg.from_user.id, msg.id)              
