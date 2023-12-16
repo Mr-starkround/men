@@ -146,18 +146,12 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
         else:
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True)
 
-async def hapus_pesan(client: Client, msg: types.Message, query: CallbackQuery):     
-    if msg.chat.type == enums.ChatType.SUPERGROUP:
-        command = msg.text or msg.caption
-        if msg.from_user is None:
-            if msg.sender_chat.id != config.channel_1:
-                return
-
-            if x := re.search(fr"(?:^|\s)({config.hastag})", command.lower()):
-                hastag = config.hastag.split('|')
-                if x[1] in [hastag[0], hastag[1]]:
-                    try:
-                        await client.delete_messages(msg.chat.id, msg.id)
+async def hapus_pesan(client: Client, query: CallbackQuery):     
+        msg = query.message
+    db = Database(msg.from_user.id)
+       
+       try:
+           await client.delete_messages(msg.chat.id, msg.id)
                     except:
                         pass
         else:
