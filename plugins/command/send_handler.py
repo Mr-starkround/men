@@ -75,7 +75,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                 ),
                 InlineKeyboardButton(
                     "🗑ʜᴀᴘᴜs",
-                    f"Menarikk")
+                callback_data="pus")
             ],
         ]
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))             
@@ -86,6 +86,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
  ),
     else:
         await msg.reply('media yang didukung photo, video dan voice')
+
 
 async def get_link():
     anu = str(config.channel_1).split('-100')[1]
@@ -147,6 +148,15 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
 
 
 async def hapus_pesan(client: Client, query: CallbackQuery):
+
+                  if coin >= config.biaya_hapus:
+                    coin = db_user.coin - config.biaya_hapus
+                else:
+                    return await msg.text(f'koinmu kureng', True, enums.ParseMode.HTML, Markup)
+
+        link = await get_link()                   
+        hapus = await client.delete_message(config.channel_1, msg.from_user.id, msg.id)              
+
      
     try:
         await query.message.reply_to_message.delete()
