@@ -64,7 +64,8 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                 else:
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
-        link = await get_link()                 
+        link = await get_link()   
+        hapus = await db.bot.delete_message(link + str(kirim.id))         
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)              
 
         buttons = [
@@ -78,7 +79,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                     callback_data="pus")
             ],
         ]
-        await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))        
+        await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))      
         await db.update_menfess(coin, menfess, all_menfess)
         await msg.reply(f"pesan telah berhasil terkirim. hari ini kamu telah mengirim menfess sebanyak {menfess + 1}/{config.batas_kirim} . kamu dapat mengirim menfess sebanyak {config.batas_kirim} kali dalam sehari\n\nwaktu reset setiap jam 1 pagi\n<a href='{link + str(kirim.id)}'>check pesan kamu</a>",       
  
@@ -145,25 +146,3 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
                 )
         else:
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True)
-
-async def hapus_pesan(client: Client, query: CallbackQuery):     
-        msg = query.message
-    db = Database(msg.from_user.id)
-       
-       try:
-           await client.delete_messages(msg.chat.id, msg.id)
-                    except:
-                        pass
-        else:
-            uid = msg.from_user.id
-        if command != None:
-            return   
-                        
-    try:
-        await query.message.reply_to_message.delete()
-    except:
-        pass
-    try:
-        await query.message.delete()
-    except:
-        pass
