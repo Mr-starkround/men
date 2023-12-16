@@ -152,6 +152,7 @@ async def hapus_pesan(client: Client, query: CallbackQuery):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()   
+    db_bot = db.get_data_bot(client.id_bot).kirimchannel
                
         link = await get_link()                   
         hapus = await client.delete_message(config.channel_1, msg.from_user.id, msg.id)              
