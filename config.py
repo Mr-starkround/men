@@ -1,20 +1,20 @@
 import os
 
-api_id = int(os.environ.get("API_ID", "21484185"))
-api_hash = os.environ.get("API_HASH", "42589444b3ee86b1286f01d966989214")
-bot_token = os.environ.get("BOT_TOKEN", "6872017467:AAFx_RzH9bGA13iolTAYJNJlDWUfLjQ_C14")
+api_id = int(os.environ.get("API_ID", "22132140"))
+api_hash = os.environ.get("API_HASH", "326ba61167a7513e85c9d8699b345b75")
+bot_token = os.environ.get("BOT_TOKEN", "6383063886:AAFfUkOPAYulvGGK5b8javiqkf8geDGmj98")
 # =========================================================== #
 
 db_url = os.environ.get("DB_URL", "mongodb+srv://Alexa:alexa@cluster0.h0zqfue.mongodb.net/true?retryWrites=true&w=majority")
 db_name = os.environ.get("DB_NAME", "menfess")
 # =========================================================== #
 
-channel_1 = int(os.environ.get("CHANNEL_1", "-1002089195394"))
-channel_2 = int(os.environ.get("CHANNEL_2", "-1002098707945"))
-channel_log = int(os.environ.get("CHANNEL_LOG", "-1002088952110"))
+channel_1 = int(os.environ.get("CHANNEL_1", "-1002059058977"))
+channel_2 = int(os.environ.get("CHANNEL_2", "-1001997635982"))
+channel_log = int(os.environ.get("CHANNEL_LOG", "-1002001435040"))
 # =========================================================== #
 
-id_admin = int(os.environ.get("ID_ADMIN", "6725628980"))
+id_admin = int(os.environ.get("ID_ADMIN", "1020381855"))
 # =========================================================== #
 
 batas_kirim = int(os.environ.get("BATAS_KIRIM", "3"))
@@ -39,7 +39,7 @@ gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
 # =========================================================== #
 
 topup_msg = os.environ.get("PESAN_TOPUP", """
-Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.
+Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika {config.batas_kirim}x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.
 
 ❏ Cara Membeli Coin Jawafess
 ├1. klik button top up dibawah ini
