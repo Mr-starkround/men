@@ -149,10 +149,14 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
 
 async def hapus_pesan(client: Client, query: CallbackQuery):
 
+    db = Database(msg.from_user.id)
+    helper = Helper(client, msg)
+    user = db.get_data_pelanggan()   
+
                   if coin >= config.biaya_hapus:
                     coin = db_user.coin - config.biaya_hapus
-                else:
-                    return await msg.text(f'koinmu kureng', True, enums.ParseMode.HTML, Markup)
+                
+              await msg.text(f'koinmu kureng', True, enums.ParseMode.HTML, Markup)
 
         link = await get_link()                   
         hapus = await client.delete_message(config.channel_1, msg.from_user.id, msg.id)              
