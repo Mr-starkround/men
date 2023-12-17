@@ -7,10 +7,14 @@ from pyrogram.types import (
     Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 )
 
-async def send_with_pic_handler(client: Client, msg: types.Message, key: str, hastag: list):
+async def send_with_pic_handler(client: Client, msg: types.Message, key: str, hastag: list, username: str):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()   
+
+    
+    if msg.from_user.username !=user.username
+           return await msg.reply('kamu tidak bisa mengirim promote menggunakan username orang lain.')
     if msg.text or msg.photo or msg.video or msg.voice:
         menfess = user.menfess
         all_menfess = user.all_menfess
@@ -38,10 +42,13 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
     else:
         await msg.reply('media yang didukung photo, video dan voice')
 
-async def send_menfess_handler(client: Client, msg: types.Message, link: str = None):
+async def send_menfess_handler(client: Client, msg: types.Message, username: str, link: str = None):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
+
+    if msg.from_user.username !=user.username
+           return await msg.reply('kamu tidak bisa mengirim promote menggunakan username orang lain.')
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
