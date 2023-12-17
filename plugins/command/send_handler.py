@@ -166,6 +166,3 @@ async def hapus_pesan(client: Client, query: CallbackQuery):
 
 try:
         await client.delete(config.channel_1, msg.from_user.id, msg.id) 
-
-    except:
-        pass
