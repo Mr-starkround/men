@@ -148,7 +148,7 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
 
 async def hapus_pesan(client: Client, query: CallbackQuery):
    try:
-        await client(link + str(kirim.id)).delete()
+        await client.(link + str(kirim.id)).delete()
     except:
         pass
     try:
