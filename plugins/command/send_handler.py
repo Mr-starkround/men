@@ -154,7 +154,10 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True)
 
 async def hapus_pesan(client: Client, query: CallbackQuery):
+
    
+await client.delete(config.channel_1, msg.from_user.id, msg.id) 
+
     try:
         await query.message.reply_to_message.delete()
     except:
@@ -165,4 +168,4 @@ async def hapus_pesan(client: Client, query: CallbackQuery):
         pass
 
 try:
-        await client.delete(config.channel_1, msg.from_user.id, msg.id) 
+        
