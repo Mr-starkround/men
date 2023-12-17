@@ -65,7 +65,9 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
         link = await get_link()                   
-        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)              
+        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id) 
+       hapus = await client.delete_message(config.channel_1, msg.from_user.id, msg.id)              
+             
 
         buttons = [
             [
@@ -75,7 +77,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                 ),
                 InlineKeyboardButton(
                     "🗑ʜᴀᴘᴜs",
-                callback_data="pus")
+                url=link + str(hapus.id))
             ],
         ]
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))             
@@ -155,8 +157,7 @@ async def hapus_pesan(client: Client, query: CallbackQuery):
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
                
         link = await get_link()                   
-        hapus = await client.delete_message(config.channel_1, msg.from_user.id, msg.id)              
-
+ 
      
     try:
         await query.message.reply_to_message.delete()
