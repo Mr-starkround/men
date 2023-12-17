@@ -82,5 +82,5 @@ class Bot(Client):
         db = Database.get_pelanggan()        
         url = f'https://api.telegram.org/bot{config.bot_token}'
         a = requests.get(f'{url}/sendMessage?chat_id={config.channel_1}&text={pesan}&parse_mode=HTML').json()
-        requests.post(f'{url}/pinChatMessage?chat_id={config.channel_log}&message_id={a["result"]["message_id"]}&parse_mode=HTML')
-        requests.post(f'{url}/deleteMessage?chat_id={config.channel_log}&message_id={a["result"]["message_id"] + 1}&parse_mode=HTML')
+        requests.post(f'{url}/pinChatMessage?chat_id={config.channel_1}&message_id={a["result"]["message_id"]}&parse_mode=HTML')
+        requests.post(f'{url}/deleteMessage?chat_id={config.channel_1}&message_id={a["result"]["message_id"] + 1}&parse_mode=HTML')
