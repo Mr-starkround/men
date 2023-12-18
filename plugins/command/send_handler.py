@@ -46,10 +46,10 @@ async def send_menfess_handler(client: Client, msg: types.Message, username: str
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
-
-    if msg.from_user.username !=user.username :
-           return await msg.reply('kamu tidak bisa mengirim promote menggunakan username orang lain.')
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
+
+   if msg.from_user.username !=user.username :
+           return await msg.reply('kamu tidak bisa mengirim promote menggunakan username orang lain.')
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
