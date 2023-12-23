@@ -135,12 +135,25 @@ async def on_message(client: Client, msg: Message):
 
 # Check if the sender has a username
     if msg.from_user.username is None:
-        return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', quote=True)
+        return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', True, enums.ParseMode.HTML)
+                    else:
+                        return await send_menfess_handler(client, msg)
+                else:
+                    await gagal_kirim_handler(client, msg)
+            else:
+                await gagal_kirim_handler(client, msg)
 
     # Check if the message mentions the sender's username
     username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
     if username and username not in msg.text.lower():
-        return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
+        return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML)
+                    else:
+                        return await send_menfess_handler(client, msg)
+                else:
+                    await gagal_kirim_handler(client, msg)
+            else:
+                await gagal_kirim_handler(client, msg)
+
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
         if msg.from_user is None:
