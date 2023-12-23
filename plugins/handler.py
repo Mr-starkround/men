@@ -126,20 +126,20 @@ async def on_message(client: Client, msg: Message):
                     )
                 elif key in hastag:
                     if key == command.lower() or len(command.split(' ')) < 3:
-                        return await msg.reply('⚠️<b>pesan gagal terkirim</b>, mengirim pesan wajib lebih dari 3 kata.', True, enums.ParseMode.HTML)
+    buttons = [
+      [
+  InlineKeyboardButton(
+                "help", callback_data="nsj"
+            ),
+    ],
+]
+                        return await msg.reply('⚠️<b>pesan gagal terkirim</b>, mengirim pesan wajib lebih dari 3 kata.', True, enums.ParseMode.HTML,      reply_markup=InlineKeyboardMarkup(buttons))
                     else:
                         return await send_menfess_handler(client, msg)
                 else:
                     await gagal_kirim_handler(client, msg)
             else:
-                await gagal_kirim_handler(client, msg)
-
-            if x := re.search(fr"(?:^|\s)({msg.from_user.username})", command.lower()):
-                key = x[1]
-                username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
-    
-                   if username not in command.lower() :
-                return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML)   
+                await gagal_kirim_handler(client, msg)            
                                   
        
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
