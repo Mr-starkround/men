@@ -96,8 +96,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
             return await msg.reply("Tidak diizinkan mengirimkan tautan.", quote=True)
 
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)              
-        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id, username)
-
+        
         buttons = [
             [
                 InlineKeyboardButton(
