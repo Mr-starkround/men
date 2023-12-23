@@ -80,9 +80,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
 
         link = await get_link()
     
-        # Check if the message mentions the sender's username
-        username = f"@{msg.from_user.username}".lower() if msg.from_user.username else '@vxnjul'
-
+               username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
         # Check if the message contains mentions of other usernames
         if msg.entities:
             for entity in msg.entities:
