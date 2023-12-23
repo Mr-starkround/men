@@ -133,6 +133,12 @@ async def on_message(client: Client, msg: Message):
                     await gagal_kirim_handler(client, msg)
             else:
                 await gagal_kirim_handler(client, msg)
+
+                   elif command == msg.from_user.username:
+              if una is None :
+                return await help_handler(client, msg)
+
+
                            
        
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
