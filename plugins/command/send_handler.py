@@ -39,9 +39,10 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
                         return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
 
         # Use regular expression to check for links in the message
-                if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
+                        # Use regular expression to check for links in the message
+        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
             return await msg.reply("Tidak diizinkan mengirimkan tautan.", quote=True)
-        
+
         kirim = await client.send_photo(config.channel_1, picture, msg.from_user.id, msg.id)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
