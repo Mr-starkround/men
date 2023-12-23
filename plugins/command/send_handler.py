@@ -9,14 +9,6 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()   
-
-buttons = [
-      [
-  InlineKeyboardButton(
-                "Rules", url="https://t.me/JAWAFES/28266"
-            ),
-    ],
-]
     if msg.text or msg.photo or msg.video or msg.voice:
         menfess = user.menfess
         all_menfess = user.all_menfess
