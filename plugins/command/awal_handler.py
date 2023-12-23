@@ -16,7 +16,8 @@ async def start_handler(client: Client, msg: types.Message):
     fullname = f'{first} {last}' if last else first
     username = (
         f'@{msg.from_user.username}'
-        if msg.from_user.username     
+        if msg.from_user.username
+        else '@{msg.from_user.username}'
     )
     mention = msg.from_user.mention
     buttons = [
@@ -25,7 +26,7 @@ async def start_handler(client: Client, msg: types.Message):
                 "ʜᴇʟᴘ", callback_data="nsj"
             ),
 InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/27528"
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/28266"
             ),
         ],
   [            InlineKeyboardButton(
@@ -70,11 +71,10 @@ async def status_handler(client: Client, msg: types.Message):
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
     bot = db.get_data_bot(id_bot)
-    pesan = "<b>📊 STATISTIK BOT\n\n"
-    pesan += f"▪️Pelanggan: {db.get_pelanggan().total_pelanggan}\n"
-    pesan += f"▪️Admin: {len(bot.admin)}\n"
-    pesan += f"▪️Talent: {len(bot.talent)}\n"
-    pesan += f"▪️Banned: {len(bot.ban)}\n\n"
+    pesan = "<b>📊 STATISTIK\n\n"
+    pesan += f"Pelanggan: {db.get_pelanggan().total_pelanggan}\n"
+    pesan += f"Admin: {len(bot.admin)}\n"    
+    pesan += f"Banned: {len(bot.ban)}\n\n"
     pesan += f"🔰Status bot: {'AKTIF' if bot.bot_status else 'TIDAK AKTIF'}</b>"
     await client.message.reply_text(pesan, True, enums.ParseMode.HTML)
 
@@ -110,13 +110,14 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     username = (
         f'@{msg.from_user.username}'
         if msg.from_user.username
+        else ''@{msg.from_user.username}'
     )
     mention = msg.from_user.mention
     buttons = [
         [InlineKeyboardButton(
                 "ʜᴇʟᴘ", callback_data="nsj"),
 InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/27528"),
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/28266"),
         ],
    [ InlineKeyboardButton(
                 "ᴄʟᴏsᴇ", callback_data="tutup"),
@@ -143,7 +144,8 @@ async def topup_handler(client: Client, msg: types.Message):
     fullname = f'{first} {last}' if last else first
     username = (
         f'@{msg.from_user.username}'
-        if msg.from_user.username      
+        if msg.from_user.username
+        else '@{msg.from_user.username}'
     )
     mention = msg.from_user.mention
     buttons = [
@@ -174,18 +176,15 @@ async def cb_help(client, callback_query):
     username = (
         f'@{callback_query.from_user.username}'
         if callback_query.from_user.username
-    
+        else '@{msg.from_user.username}'
   )
     buttons = [
-        [
+        [InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/28266"),
 InlineKeyboardButton(
-                "ʙᴀᴄᴋ", callback_data="bck"
-            ),
-            InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="tutup"
-            ),    
-  ],
-    ]
+                "ᴄʟᴏsᴇ", callback_data="tutup"),       
+   ],
+        ]
     await callback_query.edit_message_text(
         f"""
  <b>silahkan kirim pesan anda menggunakan hashtag:</b>
@@ -197,9 +196,7 @@ InlineKeyboardButton(
 • <code>#story</code> [ untuk berbagi cerita/curhat ]
 • <code>#pap</code> [ khusus media foto/video ] 
 
-<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk {username} </code>
-
-<i>Pastikan pesanmu lebih dari 3 kata, ya</i>
+<b>Contoh pesan:</b> <code>#mba gabut banget ayo callan {username} </code>
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
@@ -249,7 +246,7 @@ async def cb_hapus(client, callback_query):
  ),          
         ],
 [      InlineKeyboardButton(
-                "ʙᴀᴄᴋ", callback_data="bck"
+                "ʙᴀᴄᴋ", callback_data="peler"
             ),
     ],
 ]
@@ -275,14 +272,14 @@ async def cb_back(client, callback_query):
     username = (
         f'@{callback_query.from_user.username}'
         if callback_query.from_user.username
-       
+        else '@{msg.from_user.username}'
   )
     buttons = [
        [ InlineKeyboardButton(
                 "ʜᴇʟᴘ", callback_data="nsj"
             ),
             InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/27528"
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/28266"
  ),          
       ],
 [           InlineKeyboardButton(
@@ -307,7 +304,7 @@ async def cb_topup(client, callback_query):
     username = (
         f'@{callback_query.from_user.username}'
         if callback_query.from_user.username
-        else
+        else '@{msg.from_user.username}'
   )
     buttons = [
       [
@@ -318,7 +315,7 @@ async def cb_topup(client, callback_query):
 ]
     await callback_query.edit_message_text(
         f"""
-Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.
+Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika {config.batas_kirim}x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.
 
 ❏ Cara Membeli Coin Jawafess
 ├1. klik button top up dibawah ini
@@ -327,6 +324,39 @@ Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5
 └4. code topup anda: <code>fess {user_id}</code>
 
 coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>
+""",
+        disable_web_page_preview=True,
+     reply_markup=InlineKeyboardMarkup(buttons),
+)
+
+async def cb_peler(client, callback_query):
+    user_id = callback_query.from_user.id
+    mention = callback_query.from_user.mention
+    username = (
+        f'@{callback_query.from_user.username}'
+        if callback_query.from_user.username
+        else '@{msg.from_user.username}'
+  )
+    buttons = [
+       [ InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),
+            InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/28266"
+ ),          
+      ],
+[           InlineKeyboardButton(
+                "🗑ʜᴀᴘᴜs", callback_data="hps"
+            ),    
+  ],
+       ]
+    await callback_query.edit_message_text(
+        f"""
+❏ Haii {mention}
+
+𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
+
+silahkan baca help dan rules terlebih dahulu.
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
