@@ -116,7 +116,7 @@ buttons = [
             ),
     ],
 ]
-                if member.status == 'banned':
+             if member.status == 'banned':
                     return await msg.reply(f'⛔️Kamu telah <b>di banned oleh Admin.</b>\nsilahkan kontak @GJN_adminbot jika itu sebuah kesalahan atau untuk unbanned', True, enums.ParseMode.HTML)
                 if key in [hastag[0], hastag [1]]:
                     return (
