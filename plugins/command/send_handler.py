@@ -25,7 +25,20 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         elif key == hastag[1]:
             picture = config.pic_boy
 
-        link = await get_link()       
+        link = await get_link()   
+    # Check if the sender has a username
+    if msg.from_user.username is None:
+        return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', quote=True)
+
+    # Check if the message mentions the sender's username
+    username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+    if username and username not in msg.text.lower():
+        return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
+    
+    # Check for URLs in the message
+    if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
+        return await msg.reply("Tidak diizinkan mengirimkan tautan.")
+    
         caption = msg.text or msg.caption
         entities = msg.entities or msg.caption_entities
 
@@ -63,6 +76,19 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
         link = await get_link()
+    # Check if the sender has a username
+    if msg.from_user.username is None:
+        return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', quote=True)
+
+    # Check if the message mentions the sender's username
+    username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+    if username and username not in msg.text.lower():
+        return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
+    
+    # Check for URLs in the message
+    if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
+        return await msg.reply("Tidak diizinkan mengirimkan tautan.")
+
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
 
         buttons = [
