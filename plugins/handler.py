@@ -158,10 +158,9 @@ async def on_message(client: Client, msg: Message):
                        return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', True, enums.ParseMode.HTML)
                     else:
                         return await send_menfess_handler(client, msg)
-                else:
+              else:
                     await gagal_kirim_handler(client, msg)
-            else:
-                await gagal_kirim_handler(client, msg)
+    
 
     # Check if the message mentions the sender's username
    elif username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
