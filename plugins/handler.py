@@ -133,7 +133,8 @@ async def on_message(client: Client, msg: Message):
             else:
                 await gagal_kirim_handler(client, msg)
                            
-       if msg.from_user.username is None:
+       elif key in msg.from_user.username:
+   if key == command.lower() or len(command.split(' ')) is None :
                        return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', True, enums.ParseMode.HTML)
                     else:
                         return await send_menfess_handler(client, msg)
