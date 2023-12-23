@@ -109,8 +109,8 @@ async def on_message(client: Client, msg: Message):
                 key = x[1]
                 hastag = config.hastag.split('|')
                 member = database.get_data_pelanggan()
-     markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton('Rules', url='https://t.me/JAWAFES/28266')],
+markup = InlineKeyboardMarkup([
+ [InlineKeyboardButton('Rules', url='https://t.me/JAWAFES/28266')],
         ])
      reply_markup = InlineKeyboardMarkup(keyboard)     
                       if member.status == 'banned':
