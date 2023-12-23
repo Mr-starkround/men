@@ -17,7 +17,7 @@ async def start_handler(client: Client, msg: types.Message):
     username = (
         f'@{msg.from_user.username}'
         if msg.from_user.username
-        else '@vxnjul'
+        else
     )
     mention = msg.from_user.mention
     buttons = [
@@ -111,7 +111,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     username = (
         f'@{msg.from_user.username}'
         if msg.from_user.username
-        else '@vxnjul'
+        else
     )
     mention = msg.from_user.mention
     buttons = [
@@ -146,7 +146,7 @@ async def topup_handler(client: Client, msg: types.Message):
     username = (
         f'@{msg.from_user.username}'
         if msg.from_user.username
-        else '@vxnjul'
+        else
     )
     mention = msg.from_user.mention
     buttons = [
@@ -177,7 +177,7 @@ async def cb_help(client, callback_query):
     username = (
         f'@{callback_query.from_user.username}'
         if callback_query.from_user.username
-        else '@vxnjul'
+        else
   )
     buttons = [
         [
@@ -278,7 +278,7 @@ async def cb_back(client, callback_query):
     username = (
         f'@{callback_query.from_user.username}'
         if callback_query.from_user.username
-        else '@vxnjul'
+        else
   )
     buttons = [
        [ InlineKeyboardButton(
@@ -310,7 +310,7 @@ async def cb_topup(client, callback_query):
     username = (
         f'@{callback_query.from_user.username}'
         if callback_query.from_user.username
-        else '@vxnjul'
+        else
   )
     buttons = [
       [
