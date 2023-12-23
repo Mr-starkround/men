@@ -64,7 +64,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
        markup = InlineKeyboardMarkup([
             [InlineKeyboardButton('Rules', url='https://t.me/JAWAFES/28266')],
         ])
-
+     reply_markup = InlineKeyboardMarkup(keyboard)        
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
