@@ -33,7 +33,7 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
     # Check if the message mentions the sender's username
     username = f"@{msg.from_user.username}".lower()
  if msg.from_user.username
- else
+ else '@vxnjul'
     if username and username not in msg.text.lower():
         return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
     
@@ -82,7 +82,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
         # Check if the message mentions the sender's username
         username = f"@{msg.from_user.username}".lower() 
 if msg.from_user.username
- else
+ else '@vxnjul'
 
         # Check if the message contains mentions of other usernames
         if msg.entities:
