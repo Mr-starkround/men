@@ -144,7 +144,7 @@ async def on_message(client: Client, msg: Message):
                 await gagal_kirim_handler(client, msg)
 
     # Check if the message mentions the sender's username
-    username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+   elif username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
     if username and username not in msg.text.lower():
         return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML)
                     else:
