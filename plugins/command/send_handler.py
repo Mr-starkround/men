@@ -41,10 +41,23 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
             picture = config.pic_boy
 
         link = await get_link()       
-        caption = msg.text or msg.caption
-        entities = msg.entities or msg.caption_entities
+         # Check if the message mentions the sender's username
+        username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
 
-        kirim = await client.send_photo(config.channel_1, picture, caption, caption_entities=entities)
+        # Check if the message contains mentions of other usernames
+        if msg.entities:
+            for entity in msg.entities:
+                if entity.type == "mention":
+                    mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
+                    # If the mentioned username is not the sender's username, reject the message
+                    if mentioned_username != username:
+                        return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
+
+        # Use regular expression to check for links in the message
+        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
+            return await msg.reply("Tidak diizinkan mengirimkan tautan.", quote=True)
+
+        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
