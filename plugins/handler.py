@@ -162,6 +162,26 @@ async def on_message(client: Client, msg: Message):
     
 
     # Check if the message mentions the sender's username
+
+                      if x := re.search(fr"(?:^|\s)({config.hastag})", command.lower()):
+                key = x[1]
+                hastag = config.hastag.split('|')
+                member = database.get_data_pelanggan()
+                if member.status == 'banned':
+                    return await msg.reply(f'⛔️Kamu telah <b>di banned oleh Admin.</b>\nsilahkan kontak @GJN_adminbot jika itu sebuah kesalahan atau untuk unbanned', True, enums.ParseMode.HTML)
+                if key in [hastag[0], hastag [1]]:
+                    return (
+                        await msg.reply(
+                            '🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>',
+                            True,
+                            enums.ParseMode.HTML,
+                        )
+                        if key == command.lower()
+                        or len(command.split(' ')) < 3
+                        else await send_menfess_handler(
+                            client, msg, key, hastag
+                        )
+                    )
    elif username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
     if username and username not in msg.text.lower():
         return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML)
