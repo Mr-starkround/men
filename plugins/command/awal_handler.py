@@ -110,7 +110,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     username = (
         f'@{msg.from_user.username}'
         if msg.from_user.username
-        else ''@{msg.from_user.username}'
+        else '@{msg.from_user.username}'
     )
     mention = msg.from_user.mention
     buttons = [
