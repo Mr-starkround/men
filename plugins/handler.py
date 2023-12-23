@@ -145,12 +145,7 @@ async def on_message(client: Client, msg: Message):
                 return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML)
                     else:
                         return await send_menfess_handler(client, msg)
-                else:
-                    await gagal_kirim_handler(client, msg)
-            else:
-                await gagal_kirim_handler(client, msg)
-
-                           
+                                           
        
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
