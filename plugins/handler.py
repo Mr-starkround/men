@@ -115,8 +115,8 @@ async def on_message(client: Client, msg: Message):
     reply_markup = InlineKeyboardMarkup(keyboard)        
 
 
-                      if member.status == 'banned':
-                    return await msg.reply(f'⛔️Kamu telah <b>di banned oleh Admin.</b>\nsilahkan kontak @GJN_adminbot jika itu sebuah kesalahan atau untuk unbanned', True, enums.ParseMode.HTML, reply_markup=markup)
+                 if member.status == 'banned':
+                    return await msg.reply(f'⛔️Kamu telah <b>di banned oleh Admin.</b>\nsilahkan kontak @GJN_adminbot jika itu sebuah kesalahan atau untuk unbanned', True, enums.ParseMode.HTML, reply_markup=None)
                 if key in [hastag[0], hastag [1]]:
                     return (
                         await msg.reply(
