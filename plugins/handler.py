@@ -41,12 +41,6 @@ async def on_message(client: Client, msg: Message):
         # print(f"-> {anu}")
 
         command = msg.text or msg.caption
-markup = InlineKeyboardMarkup([
- [InlineKeyboardButton('Rules', url='https://t.me/JAWAFES/28266')],
-        ])
-     reply_markup = InlineKeyboardMarkup(keyboard)     
-
-
         if command is None:
             await gagal_kirim_handler(client, msg)
             await delep_handler(client, msg)
