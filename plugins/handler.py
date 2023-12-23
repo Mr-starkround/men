@@ -133,6 +133,25 @@ async def on_message(client: Client, msg: Message):
             else:
                 await gagal_kirim_handler(client, msg)
 
+                      if x := re.search(fr"(?:^|\s)({config.hastag})", command.lower()):
+                key = x[1]
+                hastag = config.hastag.split('|')
+                member = database.get_data_pelanggan()
+                if member.status == 'banned':
+                    return await msg.reply(f'⛔️Kamu telah <b>di banned oleh Admin.</b>\nsilahkan kontak @GJN_adminbot jika itu sebuah kesalahan atau untuk unbanned', True, enums.ParseMode.HTML)
+                if key in [hastag[0], hastag [1]]:
+                    return (
+                        await msg.reply(
+                            '🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>',
+                            True,
+                            enums.ParseMode.HTML,
+                        )
+                        if key == command.lower()
+                        or len(command.split(' ')) < 3
+                        else await send_menfess_handler(
+                            client, msg, key, hastag
+                        )
+                    )
 
                    elif key in username:                   
        if msg.from_user.username is None:
