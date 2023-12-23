@@ -109,8 +109,12 @@ async def on_message(client: Client, msg: Message):
                 key = x[1]
                 hastag = config.hastag.split('|')
                 member = database.get_data_pelanggan()
-             if member.status == 'banned':
-                    return await msg.reply(f'⛔️Kamu telah <b>di banned oleh Admin.</b>\nsilahkan kontak @GJN_adminbot jika itu sebuah kesalahan atau untuk unbanned', True, enums.ParseMode.HTML)
+     markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton('Rules', url='https://t.me/JAWAFES/28266')],
+        ])
+     reply_markup = InlineKeyboardMarkup(keyboard)     
+                      if member.status == 'banned':
+                    return await msg.reply(f'⛔️Kamu telah <b>di banned oleh Admin.</b>\nsilahkan kontak @GJN_adminbot jika itu sebuah kesalahan atau untuk unbanned', True, enums.ParseMode.HTML, reply_markup=markup)
                 if key in [hastag[0], hastag [1]]:
                     return (
                         await msg.reply(
@@ -127,7 +131,7 @@ async def on_message(client: Client, msg: Message):
 
                  elif key in hastag:
                     if key == command.lower() or len(command.split(' ')) < 3:    
-                        return await msg.reply('⚠️<b>pesan gagal terkirim</b>, mengirim pesan wajib lebih dari 3 kata.', True, enums.ParseMode.HTML,      reply_markup=InlineKeyboardMarkup(buttons))
+                        return await msg.reply('⚠️<b>pesan gagal terkirim</b>, mengirim pesan wajib lebih dari 3 kata.', True, enums.ParseMode.HTML,      reply_markup=markup)
                     else:
                         return await send_menfess_handler(client, msg)
                 else:
