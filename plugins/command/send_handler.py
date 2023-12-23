@@ -31,8 +31,8 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', quote=True)
 
     # Check if the message mentions the sender's username
-    username = f"@{msg.from_user.username}".lower() if msg.from_user.username else '@vxnjul'
-    if username and username not in msg.text.lower():
+    username = f"@{msg.from_user.username}" if msg.from_user.username else '@vxnjul'
+    if username and username not in msg.text :
         return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
     
     # Check for URLs in the message
