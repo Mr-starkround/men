@@ -41,6 +41,12 @@ async def on_message(client: Client, msg: Message):
         # print(f"-> {anu}")
 
         command = msg.text or msg.caption
+markup = InlineKeyboardMarkup([
+ [InlineKeyboardButton('Rules', url='https://t.me/JAWAFES/28266')],
+        ])
+     reply_markup = InlineKeyboardMarkup(keyboard)     
+
+
         if command is None:
             await gagal_kirim_handler(client, msg)
             await delep_handler(client, msg)
@@ -109,10 +115,7 @@ async def on_message(client: Client, msg: Message):
                 key = x[1]
                 hastag = config.hastag.split('|')
                 member = database.get_data_pelanggan()
-markup = InlineKeyboardMarkup([
- [InlineKeyboardButton('Rules', url='https://t.me/JAWAFES/28266')],
-        ])
-     reply_markup = InlineKeyboardMarkup(keyboard)     
+
                       if member.status == 'banned':
                     return await msg.reply(f'⛔️Kamu telah <b>di banned oleh Admin.</b>\nsilahkan kontak @GJN_adminbot jika itu sebuah kesalahan atau untuk unbanned', True, enums.ParseMode.HTML, reply_markup=markup)
                 if key in [hastag[0], hastag [1]]:
