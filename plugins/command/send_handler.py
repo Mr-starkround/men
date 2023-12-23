@@ -37,7 +37,7 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
                     # If the mentioned username is not the sender's username, reject the message
                     if mentioned_username != username:
                         return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.',
-       disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
+       disable_web_page_preview=True,        reply_markup=Markup,
         quote=True
  ),
 
@@ -56,13 +56,6 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         await msg.reply('media yang didukung photo, video dan voice')
 
 async def send_menfess_handler(client: Client, msg: types.Message, link: str = None):
-buttons = [
-      [
-  InlineKeyboardButton(
-                "Rules", url="https://t.me/JAWAFES/28266"
-            ),
-    ],
-]
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
@@ -103,7 +96,7 @@ buttons = [
                     mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
                     # If the mentioned username is not the sender's username, reject the message
                     if mentioned_username != username:
-                        return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.',        disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
+                        return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.',        disable_web_page_preview=True,        reply_markup=markup,
         quote=True
  ),
 
