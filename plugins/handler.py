@@ -140,7 +140,7 @@ async def on_message(client: Client, msg: Message):
     if username and username not in msg.text.lower():
                         member = database.get_data_pelanggan()
 
-                   elif command == 'username' :
+                   elif command == 'una' :
               if username not in command.lower() :
                 return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML)                 
                                            
