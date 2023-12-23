@@ -44,7 +44,7 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         # Use regular expression to check for links in the message
                         # Use regular expression to check for links in the message
         if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
-            return await msg.reply("Tidak diizinkan mengirimkan tautan.",        disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
+            return await msg.reply("Tidak diizinkan mengirimkan tautan.",        disable_web_page_preview=True,        reply_markup=markup,
         quote=True
  ),
 
