@@ -81,8 +81,6 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                     coin = db_user.coin - config.biaya_kirim
                 else:
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
-
-        link = await get_link()
 buttons = [
       [
   InlineKeyboardButton(
@@ -90,6 +88,7 @@ buttons = [
             ),
     ],
 ]
+        link = await get_link()
     # Check if the message mentions the sender's username
         username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
 
