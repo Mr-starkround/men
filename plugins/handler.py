@@ -16,6 +16,7 @@ async def on_message(client: Client, msg: Message):
 
         else:
             uid = msg.from_user.id
+            una = msg.from_user.username
         helper = Helper(client, msg)
         database = Database(uid)
 
