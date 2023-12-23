@@ -12,9 +12,18 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()   
 
-    
-    if msg.from_user.username !=user.username :
-           return await msg.reply('kamu tidak bisa mengirim promote menggunakan username orang lain.')
+      # Check if the sender has a username
+    if msg.from_user.username is None:
+        return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', quote=True)
+
+    # Check if the message mentions the sender's username
+    username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+    if username and username not in msg.text.lower():
+        return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
+
+    # Check for URLs in the message
+    if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
+        return await msg.reply("Tidak diizinkan mengirimkan tautan.")
     if msg.text or msg.photo or msg.video or msg.voice:
         menfess = user.menfess
         all_menfess = user.all_menfess
