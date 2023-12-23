@@ -79,8 +79,9 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
         link = await get_link()
-    
-               username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+    # Check if the message mentions the sender's username
+        username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+
         # Check if the message contains mentions of other usernames
         if msg.entities:
             for entity in msg.entities:
@@ -93,6 +94,8 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
         # Use regular expression to check for links in the message
         if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
             return await msg.reply("Tidak diizinkan mengirimkan tautan.", quote=True)
+
+        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)              
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id, username)
 
         buttons = [
