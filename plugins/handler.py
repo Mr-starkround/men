@@ -140,8 +140,7 @@ async def on_message(client: Client, msg: Message):
     
                    if username not in command.lower() :
                 return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML)   
-                        member = database.get_data_pelanggan()              
-                                           
+                                  
        
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
