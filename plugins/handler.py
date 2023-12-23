@@ -134,10 +134,15 @@ async def on_message(client: Client, msg: Message):
             else:
                 await gagal_kirim_handler(client, msg)
 
-                   elif command == msg.from_user.username:
-              if una is None :
-                return await help_handler(client, msg)
+            if x := re.search(fr"(?:^|\s)({msg.from_user.username})", command.lower()):
+                key = x[1]
+                username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+    if username and username not in msg.text.lower():
+                        member = database.get_data_pelanggan()
 
+                   elif command == 'username' :
+              if username not in command.lower() :
+                return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
 
                            
        
