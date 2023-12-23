@@ -182,8 +182,9 @@ async def on_message(client: Client, msg: Message):
                             client, msg, key, hastag
                         )
                     )
-   elif username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
-    if username and username not in msg.text.lower():
+              elif key in username:
+     username = msg.from_user.username
+    if username not in msg.text.lower():
         return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML)
                     else:
                         return await send_menfess_handler(client, msg)
