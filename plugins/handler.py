@@ -133,13 +133,7 @@ async def on_message(client: Client, msg: Message):
             else:
                 await gagal_kirim_handler(client, msg)
                            
-       elif key in msg.from_user.username:
-   if key == command.lower() or len(command.split(' ')) is None :
-                       return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', True, enums.ParseMode.HTML)
-                    else:
-                        return await send_menfess_handler(client, msg)
-                     await gagal_kirim_handler(client, msg)
-        
+       
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
         if msg.from_user is None:
