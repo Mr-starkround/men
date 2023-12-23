@@ -134,9 +134,7 @@ async def on_message(client: Client, msg: Message):
                 await gagal_kirim_handler(client, msg)
 
 # Check if the sender has a username
-   elif key in hastag:
-                    if key == command.lower() or len(command.split(' ')) < 3:
-
+   elif key in username:                   
     if msg.from_user.username is None:
         return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', True, enums.ParseMode.HTML)
                     else:
