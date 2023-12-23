@@ -54,35 +54,33 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
     else:
         await msg.reply('media yang didukung photo, video dan voice')
 
-async def send_menfess_handler(client: Client, msg: types.Message, username: str, link: str = None):
+async def send_menfess_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
-
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
-            if db_user.status == 'member' or db_user.status == 'talent':
+            if db_user.status in ['member', 'talent']:
                 return await msg.reply('Tidak bisa mengirim photo, karena sedang dinonaktifkan oleh admin', True)
         elif msg.video and not db_bot.video:
-            if db_user.status == 'member' or db_user.status == 'talent':
+            if db_user.status in ['member', 'talent']:
                 return await msg.reply('Tidak bisa mengirim video, karena sedang dinonaktifkan oleh admin', True)
         elif msg.voice and not db_bot.voice:
-            if db_user.status == 'member' or db_user.status == 'talent':
-                return await msg.reply('Tidak bisa mengirim voice, karena sedang dinonaktifkan oleh admin', True)
+            return await msg.reply('Tidak bisa mengirim voice, karena sedang dinonaktifkan oleh admin', True)
 
         menfess = db_user.menfess
         all_menfess = db_user.all_menfess
         coin = db_user.coin
-        if menfess >= config.batas_kirim:
-            if db_user.status == 'member' or db_user.status == 'talent':
-                if coin >= config.biaya_kirim:
-                    coin = db_user.coin - config.biaya_kirim
-                else:
-                    return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
+        if menfess >= config.batas_kirim and db_user.status in ['member', 'talent']:
+            if coin >= config.biaya_kirim:
+                coin = db_user.coin - config.biaya_kirim
+            else:
+                return await msg.reply(f'🙅🏻‍♀️ post gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali.serta coin mu kurang untuk mengirim menfess diluar batas harian., kamu dapat mengirim menfess kembali pada hari esok.\n\n waktu reset jam 1 pagi', quote=True)
 
         link = await get_link()
-       # Check if the message mentions the sender's username
+
+        # Check if the message mentions the sender's username
         username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
 
         # Check if the message contains mentions of other usernames
@@ -97,7 +95,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, username: str
         # Use regular expression to check for links in the message
         if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
             return await msg.reply("Tidak diizinkan mengirimkan tautan.", quote=True)
-           
+
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id) 
 
         buttons = [
