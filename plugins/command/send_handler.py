@@ -32,14 +32,14 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         # Check if the message contains mentions of other usernames
         if msg.entities:
             for entity in msg.entities:
-                if entity.type == "mention":
+                if entity.type == "username":
                     mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
                     # If the mentioned username is not the sender's username, reject the message
                     if mentioned_username != username:
                         return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
 
         # Use regular expression to check for links in the message
-        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.caption or ""):
+        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.caption, msg text or ""):
             return await msg.reply("Tidak diizinkan mengirimkan tautan.", quote=True)
 
         caption = msg.text or msg.caption
@@ -85,7 +85,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
         # Check if the message contains mentions of other usernames
         if msg.entities:
             for entity in msg.entities:
-                if entity.type == "mention":
+                if entity.type == "username":
                     mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
                     # If the mentioned username is not the sender's username, reject the message
                     if mentioned_username != username:
