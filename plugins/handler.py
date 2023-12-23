@@ -16,7 +16,6 @@ async def on_message(client: Client, msg: Message):
 
         else:
             uid = msg.from_user.id
-            una = msg.from_user.username
         helper = Helper(client, msg)
         database = Database(uid)
 
@@ -31,7 +30,8 @@ async def on_message(client: Client, msg: Message):
         # Pesan jika bot sedang dalam kondisi tidak aktif
         if not database.get_data_bot(client.id_bot).bot_status:
             status = [
-                'member', 'banned', 'topup'
+                'member', 'banned', 'topup', 'daddy sugar', 'moans girl',
+                'moans boy', 'girlfriend rent', 'boyfriend rent'
             ]
             member = database.get_data_pelanggan()
             if member.status in status:
@@ -43,7 +43,6 @@ async def on_message(client: Client, msg: Message):
         command = msg.text or msg.caption
         if command is None:
             await gagal_kirim_handler(client, msg)
-            await delep_handler(client, msg)
 
         else:
             if command == '/start':  # menampilkan perintah start
@@ -63,6 +62,21 @@ async def on_message(client: Client, msg: Message):
 
             elif command == '/topup':
                 return await topup_handler(client, msg)
+
+            elif command == '/daddysugar':
+                return await gagal_kirim_handler(client, msg)
+
+            elif command == '/moansgirl':
+                return await gagal_kirim_handler(client, msg)
+
+            elif command == '/moansboy':
+                return await gagal_kirim_handler(client, msg)
+
+            elif command == '/gfrent':
+                return await gagal_kirim_handler(client, msg)
+
+            elif command == '/bfrent':
+                return await gagal_kirim_handler(client, msg)
 
             elif command == '/stats':  # menampilkan perintah statistik
                 if uid == config.id_admin:
@@ -94,7 +108,35 @@ async def on_message(client: Client, msg: Message):
             elif re.search(r"^[\/]unadmin", command):
                 if uid == config.id_admin:
                     return await hapus_admin_handler(client, msg)
-          
+
+            elif re.search(r"^[\/]addtalent", command):  # menambahkan talent baru
+                if uid == config.id_admin:
+                    return await tambah_talent_handler(client, msg)
+
+            elif re.search(r"^[\/]addsugar", command):  # menambahkan daddy sugar baru
+                if uid == config.id_admin:
+                    return await tambah_sugar_daddy_handler(client, msg)
+
+            elif re.search(r"^[\/]addgirl", command):  # menambahkan moans girl baru
+                if uid == config.id_admin:
+                    return await tambah_moans_girl_handler(client, msg)
+
+            elif re.search(r"^[\/]addboy", command):  # menambahkan moans boy baru
+                if uid == config.id_admin:
+                    return await tambah_moans_boy_handler(client, msg)
+
+            elif re.search(r"^[\/]addgf", command):  # menambahkan gf rent baru
+                if uid == config.id_admin:
+                    return await tambah_gf_rent_handler(client, msg)
+
+            elif re.search(r"^[\/]addbf", command):  # menambahkan bf rent baru
+                if uid == config.id_admin:
+                    return await tambah_bf_rent_handler(client, msg)
+
+            elif re.search(r"^[\/]hapus", command):  # menambahkan mengapus talent
+                if uid == config.id_admin:
+                    return await hapus_talent_handler(client, msg)
+
             elif re.search(r"^[\/]ban", command):  # membanned user
                 member = database.get_data_pelanggan()
                 if member.status in ['admin', 'owner']:
@@ -109,14 +151,8 @@ async def on_message(client: Client, msg: Message):
                 key = x[1]
                 hastag = config.hastag.split('|')
                 member = database.get_data_pelanggan()
-    keyboard = [
-        [InlineKeyboardButton(                "ᴄᴀʀᴀ ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", callback_data="tpp")],
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)        
-
-
-                 if member.status == 'banned':
-                    return await msg.reply(f'⛔️Kamu telah <b>di banned oleh Admin.</b>\nsilahkan kontak @GJN_adminbot jika itu sebuah kesalahan atau untuk unbanned', True, enums.ParseMode.HTML, reply_markup=None)
+                if member.status == 'banned':
+                    return await msg.reply(f'⛔️Akun anda tidak dapat mengirim menfess karena telah di banned oleh <b>Admin</b>\nJika anda merasa itu sebuah kesalahan, silahkan hubungi @vxnjul.', True, enums.ParseMode.HTML)
                 if key in [hastag[0], hastag [1]]:
                     return (
                         await msg.reply(
@@ -130,18 +166,15 @@ async def on_message(client: Client, msg: Message):
                             client, msg, key, hastag
                         )
                     )
-
-                 elif key in hastag:
-                    if key == command.lower() or len(command.split(' ')) < 3:    
-                        return await msg.reply(f'⚠️<b>pesan gagal terkirim</b>, mengirim pesan wajib lebih dari 3 kata.', True, enums.ParseMode.HTML,reply_markup=markup)
+                elif key in hastag:
+                    if key == command.lower() or len(command.split(' ')) < 3:
+                        return await msg.reply('🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>', True, enums.ParseMode.HTML)
                     else:
                         return await send_menfess_handler(client, msg)
                 else:
                     await gagal_kirim_handler(client, msg)
             else:
-                await gagal_kirim_handler(client, msg)            
-                                  
-       
+                await gagal_kirim_handler(client, msg)
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
         if msg.from_user is None:
@@ -167,7 +200,9 @@ async def on_callback_query(client: Client, query: CallbackQuery):
     if query.data == 'photo':
         await photo_handler_inline(client, query)
     elif query.data == 'video':
-        await video_handler_inline(client, query)      
+        await video_handler_inline(client, query)
+    elif query.data == 'peler':     
+        await cb_peler(client, query)  
     elif query.data == 'tpp':     
         await cb_topup(client, query)  
     elif query.data == 'bck':
@@ -189,5 +224,3 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await broadcast_ya(client, query)
     elif query.data == 'tutup':
         await close_cbb(client, query)
-    elif query.data == 'pus':
-        await hapus_pesan(client, query)
