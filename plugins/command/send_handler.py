@@ -99,6 +99,8 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
 
         # Use regular expression to check for links in the message
 
+        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
+
 buttons = [
       [
   InlineKeyboardButton(
@@ -106,8 +108,6 @@ buttons = [
             ),
     ],
 ]
-
-        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
             return await msg.reply("Tidak diizinkan mengirimkan tautan.",        disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
  ),
