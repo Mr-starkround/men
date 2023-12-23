@@ -132,7 +132,7 @@ buttons = [
             ),
     ],
 ]
-                elif key in hastag:
+                    elif key in hastag:
                     if key == command.lower() or len(command.split(' ')) < 3:    
                         return await msg.reply('⚠️<b>pesan gagal terkirim</b>, mengirim pesan wajib lebih dari 3 kata.', True, enums.ParseMode.HTML,      reply_markup=InlineKeyboardMarkup(buttons))
                     else:
