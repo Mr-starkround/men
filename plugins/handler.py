@@ -137,12 +137,10 @@ async def on_message(client: Client, msg: Message):
             if x := re.search(fr"(?:^|\s)({msg.from_user.username})", command.lower()):
                 key = x[1]
                 username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
-    if username and username not in msg.text.lower():
-                        member = database.get_data_pelanggan()
-
-                   elif command == 'una' :
-              if username not in command.lower() :
-                return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML)                 
+    
+                   if username not in command.lower() :
+                return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML)   
+                        member = database.get_data_pelanggan()              
                                            
        
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
