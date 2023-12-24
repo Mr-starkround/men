@@ -162,7 +162,7 @@ async def on_message(client: Client, msg: Message):
                         )
                         if key == command.lower()
                         or len(command.split(' ')) < 3
-                        else:
+                        else
 keyboard = [
         [InlineKeyboardButton(                "RULES", url="https://t.me/JAWAFES/28266")],
     ]
