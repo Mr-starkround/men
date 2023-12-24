@@ -15,6 +15,10 @@ async def on_message(client: Client, msg: Message):
             return
 
         else:
+keyboard = [
+        [InlineKeyboardButton(                "RULES", url="https://t.me/JAWAFES/28266")],
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)        
             uid = msg.from_user.id
         helper = Helper(client, msg)
         database = Database(uid)
