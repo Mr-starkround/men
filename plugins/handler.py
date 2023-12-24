@@ -177,11 +177,11 @@ keyboard = [
                         return await msg.reply('🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>', True, enums.ParseMode.HTML, reply_markup=markup)
                     else:
                         return await send_menfess_handler(client, msg)
-                else:
-                    return await gagal_kirim_handler(client, msg)
-                else:
-                return await gagal_kirim_handler(client, msg)
-    elif msg.chat.type == enums.ChatType.SUPERGROUP:
+                   else:
+                    await gagal_kirim_handler(client, msg)
+                   else:
+                await gagal_kirim_handler(client, msg)
+            elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
         if msg.from_user is None:
             if msg.sender_chat.id != config.channel_1:
