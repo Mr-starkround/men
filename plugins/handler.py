@@ -164,7 +164,7 @@ async def on_message(client: Client, msg: Message):
                         or len(command.split(' ')) < 3
                         else: 
     keyboard = [
-        [InlineKeyboardButton(                "ᴄᴀʀᴀ ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", callback_data="tpp")],
+        [InlineKeyboardButton(                "RULES", url="https://t.me/JAWAFES/28266")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)        
 
