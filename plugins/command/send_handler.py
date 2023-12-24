@@ -91,7 +91,7 @@ reply_markup = InlineKeyboardMarkup(keyboard)
 
 
         # Check if the message contains mentions of other usernames
-        if msg.entities:
+        elif msg.entities:
             for entity in msg.entities:
                 if entity.type == "username":
                     mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
