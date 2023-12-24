@@ -168,7 +168,7 @@ async def on_message(client: Client, msg: Message):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)        
 
-                return await send_menfess_handler(
+                await send_menfess_handler(
                             client, msg, key, hastag
                         )
                     )
