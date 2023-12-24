@@ -27,7 +27,9 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
 
         link = await get_link()   
     # Check if the message mentions the sender's username
-        username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+        username = f"@{msg.from_user.username}".lower() 
+   if msg.from_user.username 
+      else '@vxnjul'
 
         # Check if the message contains mentions of other usernames
         if msg.entities:
@@ -83,7 +85,9 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
 
         link = await get_link()  
     # Check if the message mentions the sender's username
-        username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+        username = f"@{msg.from_user.username}".lower()
+     if msg.from_user.username 
+         else '@vxnjul'
 
         # Check if the message contains mentions of other usernames
         if msg.entities:
