@@ -155,7 +155,7 @@ async def on_message(client: Client, msg: Message):
                     return await msg.reply(f'⛔️Akun anda tidak dapat mengirim menfess karena telah di banned oleh <b>Admin</b>\nJika anda merasa itu sebuah kesalahan, silahkan hubungi @vxnjul.', True, enums.ParseMode.HTML)
                 if key in [hastag[0], hastag [1]]:
                     return (
-                        await msg.reply(
+                     await msg.reply(
                             '🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>',
                             True,
                             enums.ParseMode.HTML,
@@ -168,7 +168,7 @@ async def on_message(client: Client, msg: Message):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)        
 
-                  await send_menfess_handler(
+                return await send_menfess_handler(
                             client, msg, key, hastag
                         )
                     )
