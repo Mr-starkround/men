@@ -84,19 +84,21 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
         link = await get_link()  
     # Check if the message mentions the sender's username
         username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+
+        # Check if the message contains mentions of other usernames
+        if msg.entities:
+            for entity in msg.entities:
+                if entity.type == "username":
+                    mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
+                    # If the mentioned username is not the sender's username, reject the message
+                    if mentioned_username != username:
+          else:
 keyboard = [
         [InlineKeyboardButton(                "ᴄᴀʀᴀ ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", callback_data="tpp")],  
  ]   
 reply_markup = InlineKeyboardMarkup(keyboard)        
 
 
-        # Check if the message contains mentions of other usernames
-        elif msg.entities:
-            for entity in msg.entities:
-                if entity.type == "username":
-                    mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
-                    # If the mentioned username is not the sender's username, reject the message
-                    if mentioned_username != username:
                         return await msg.reply(f"Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.",        disable_web_page_preview=True,        reply_markup=markup,
         quote=True
  ),
