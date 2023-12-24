@@ -178,9 +178,9 @@ keyboard = [
                     else:
                         return await send_menfess_handler(client, msg)
                 else:
-                    await gagal_kirim_handler(client, msg)
+                    return await gagal_kirim_handler(client, msg)
                 else:
-                await gagal_kirim_handler(client, msg)
+                return await gagal_kirim_handler(client, msg)
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
         if msg.from_user is None:
