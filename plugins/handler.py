@@ -162,7 +162,13 @@ async def on_message(client: Client, msg: Message):
                         )
                         if key == command.lower()
                         or len(command.split(' ')) < 3
-                        else await send_menfess_handler(
+                        else:
+keyboard = [
+        [InlineKeyboardButton(                "RULES", url="https://t.me/JAWAFES/28266")],
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)        
+
+ await send_menfess_handler(
                             client, msg, key, hastag
                         )
                     )
@@ -173,7 +179,7 @@ async def on_message(client: Client, msg: Message):
                         return await send_menfess_handler(client, msg)
                 else:
                     await gagal_kirim_handler(client, msg)
-            else:
+                else:
                 await gagal_kirim_handler(client, msg)
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
