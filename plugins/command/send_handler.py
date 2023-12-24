@@ -92,7 +92,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                     mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
                     # If the mentioned username is not the sender's username, reject the message
                     if mentioned_username != username:
-          else:
+  
 keyboard = [
         [InlineKeyboardButton(                "ᴄᴀʀᴀ ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", callback_data="tpp")],  
  ]   
