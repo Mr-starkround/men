@@ -181,7 +181,7 @@ keyboard = [
                 await gagal_kirim_handler(client, msg)
    
         
-       elif msg.chat.type == enums.ChatType.SUPERGROUP:
+      if msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
         if msg.from_user is None:
             if msg.sender_chat.id != config.channel_1:
