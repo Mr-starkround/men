@@ -32,21 +32,16 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         # Check if the message contains mentions of other usernames
         if msg.entities:
             for entity in msg.entities:
-                if entity.type == "username":
+                if entity.type == "mention":
                     mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
                     # If the mentioned username is not the sender's username, reject the message
                     if mentioned_username != username:
-                        return await msg.reply(f'Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.',
-       disable_web_page_preview=True,        reply_markup=Markup,
-        quote=True
- ),
+                        return await msg.reply(f'Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
         # Use regular expression to check for links in the message
                         # Use regular expression to check for links in the message
         if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
-            return await msg.reply(f"Tidak diizinkan mengirimkan tautan.",        disable_web_page_preview=True,        reply_markup=markup,
-        quote=True
- ),
+            return await msg.reply(f"Tidak diizinkan mengirimkan tautan.", True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
         kirim = await client.send_photo(config.channel_1, picture, msg.from_user.id, msg.id)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
@@ -89,14 +84,12 @@ reply_markup = InlineKeyboardMarkup(keyboard)
 
         link = await get_link()  
     # Check if the message mentions the sender's username
-        username = f"@{msg.from_user.username}".lower()
-     if msg.from_user.username 
-         else '@vxnjul'
+        username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
 
         # Check if the message contains mentions of other usernames
         if msg.entities:
             for entity in msg.entities:
-                if entity.type == "username":
+                if entity.type == "mention":
                     mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
                     # If the mentioned username is not the sender's username, reject the message
                     if mentioned_username != username:
