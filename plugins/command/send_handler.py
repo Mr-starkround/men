@@ -56,10 +56,17 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
 
-    keyboard = [
-        [InlineKeyboardButton(                "ᴄᴀʀᴀ ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", callback_data="tpp")],  
- ]   
-reply_markup = InlineKeyboardMarkup(keyboard),
+            buttons = [
+            [
+                InlineKeyboardButton(
+                    f"👀ʟɪʜᴀᴛ",
+                url=link + str(kirim.id),
+                ),
+                InlineKeyboardButton(
+                    "🗑ʜᴀᴘᴜs",
+                    callback_data="hps")
+            ],
+        ]
 
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
@@ -94,13 +101,16 @@ reply_markup = InlineKeyboardMarkup(keyboard),
                     # If the mentioned username is not the sender's username, reject the message
                     if mentioned_username != username:
 
-                        return await msg.reply(f"Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.", True, enums.ParseMode.HTML,reply_markup=reply_markup),
+                        return await msg.reply(f"Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.", disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
+        quote=True
+ ),
 
         # Use regular expression to check for links in the message
 
         if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
 
-            return await msg.reply(f"Tidak diizinkan mengirimkan tautan.", True, enums.ParseMode.HTML,reply_markup=reply_markup)    
+            return await msg.reply(f"Tidak diizinkan mengirimkan tautan.", disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
+        quote=True
  ),
 
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)              
