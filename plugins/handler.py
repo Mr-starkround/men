@@ -42,9 +42,9 @@ async def on_message(client: Client, msg: Message):
 keyboard = [
         [InlineKeyboardButton(                "RULES", url="https://t.me/JAWAFES/28266")],
     ]
- reply_markup = InlineKeyboardMarkup(keyboard)      
-          
+ 
 
+   reply_markup = InlineKeyboardMarkup(keyboard)                
         command = msg.text or msg.caption
         if command is None:
             await gagal_kirim_handler(client, msg)
