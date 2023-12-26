@@ -103,16 +103,13 @@ reply_markup = InlineKeyboardMarkup(keyboard)
                     # If the mentioned username is not the sender's username, reject the message
                     if mentioned_username != username:
 
-                        return await msg.reply(f"Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.",        disable_web_page_preview=True,        reply_markup=markup,
-        quote=True
- ),
+                        return await msg.reply(f"Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.", True, enums.ParseMode.HTML,reply_markup=reply_markup),
 
         # Use regular expression to check for links in the message
 
         if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
 
-            return await msg.reply(f"Tidak diizinkan mengirimkan tautan.",        disable_web_page_preview=True,        reply_markup=markup,
-        quote=True
+            return await msg.reply(f"Tidak diizinkan mengirimkan tautan.", True, enums.ParseMode.HTML,reply_markup=reply_markup)    
  ),
 
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)              
