@@ -13,11 +13,13 @@ async def on_message(client: Client, msg: Message):
     if msg.chat.type == enums.ChatType.PRIVATE:
         if msg.from_user is None:
             return
+
 keyboard = [
         [InlineKeyboardButton(                "RULES", url="https://t.me/JAWAFES/28266")],
     ]
-    reply_markup = InlineKeyboardMarkup(keyboard)      
+ reply_markup = InlineKeyboardMarkup(keyboard)      
           
+
             uid = msg.from_user.id
         helper = Helper(client, msg)
         database = Database(uid)
