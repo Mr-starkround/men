@@ -56,20 +56,6 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
 
-
-
- buttons = [
-            [
-                InlineKeyboardButton(
-                    f"👀ʟɪʜᴀᴛ",
-                url=link + str(kirim.id),
-                ),
-                InlineKeyboardButton(
-                    "🗑ʜᴀᴘᴜs",
-                    callback_data="hps")
-            ],
-        ]
-
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
