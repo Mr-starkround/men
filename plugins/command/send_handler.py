@@ -59,7 +59,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
     keyboard = [
         [InlineKeyboardButton(                "ᴄᴀʀᴀ ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", callback_data="tpp")],  
  ]   
-reply_markup = InlineKeyboardMarkup(keyboard)        
+reply_markup = InlineKeyboardMarkup(keyboard),
 
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
