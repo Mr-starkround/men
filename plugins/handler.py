@@ -12,13 +12,7 @@ from bot import Bot
 async def on_message(client: Client, msg: Message):
     if msg.chat.type == enums.ChatType.PRIVATE:
         if msg.from_user is None:
-            return
-
-keyboard = [
-        [InlineKeyboardButton(                "RULES", url="https://t.me/JAWAFES/28266")],
-    ]
- reply_markup = InlineKeyboardMarkup(keyboard)      
-          
+            return else:
 
             uid = msg.from_user.id
         helper = Helper(client, msg)
