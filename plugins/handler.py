@@ -17,7 +17,7 @@ keyboard = [
         [InlineKeyboardButton(                "RULES", url="https://t.me/JAWAFES/28266")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)      
-        else:  
+          
             uid = msg.from_user.id
         helper = Helper(client, msg)
         database = Database(uid)
