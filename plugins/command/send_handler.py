@@ -65,8 +65,14 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
 
         link = await get_link()
       # Check if the message mentions the sender's username
-        self.username = "-" if not self.message.from_user.username else '@' + self.message.from_user.username
-  
+    self.username = (
+        f'@{msg.from_user.username}'
+        if msg.from_user.username
+        else None
+    )
+    mention = msg.from_user.mention
+
+        if not self.username
                         return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
 
         # Use regular expression to check for links in the message
