@@ -66,7 +66,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
         link = await get_link()
       # Check if the message mentions the sender's username
           self.username = "-" if not self.message.from_user.username else '@' + self.message.from_user.username  
-          await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
+          await msg.reply(f'Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', True, enums.ParseMode.HTML)
 
         # Use regular expression to check for links in the message
         if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
