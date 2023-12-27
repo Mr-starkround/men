@@ -28,6 +28,21 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         link = await get_link()       
         caption = msg.text or msg.caption
         entities = msg.entities or msg.caption_entities
+    # Check if the sender has a username
+    if msg.from_user.username is None:
+        return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', quote=True)
+
+    # Check if the message mentions the sender's username
+    username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+    if username and username not in msg.text.lower():
+        return await msg.reply('⚠️ pesan gagal terkirim, anda menggunakan username orang lain, untuk mencegah fake promote silahkan gunakan username anda sendiri atau buat pesan promote tanpa username = (menfess)', quote=True)
+
+        # Use regular expression to check for links in the message
+        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
+            return await msg.reply(f"Tidak diizinkan mengirimkan tautan.", quote=True)
+
+
+
 
         kirim = await client.send_photo(config.channel_1, picture, caption, caption_entities=entities)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
