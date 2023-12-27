@@ -81,6 +81,21 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
     # Check if the message mentions the sender's username
         username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
 
+buttons = [
+        [                       
+            InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),
+InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/28266"
+            ),
+        ],
+  [            InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="tutup"
+            ),    
+  ],
+
+  ]
         # Check if the message contains mentions of other usernames
         if msg.entities:
             for entity in msg.entities:
