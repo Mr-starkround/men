@@ -112,7 +112,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
  ),    
     else:
         await msg.reply("Tidak diizinkan mengirimkan tautan.",
-       disable_web_page_preview=True,        reply_markup=reply_markup
+       disable_web_page_preview=True,        reply_markup=reply_markup,
  quote=True)
 
 
