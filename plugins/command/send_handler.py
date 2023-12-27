@@ -5,38 +5,6 @@ from pyrogram import Client, types, enums
 from plugins import Database, Helper
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-async def send_with_pic_handler(client: Client, msg: types.Message, key: str, hastag: list):
-    db = Database(msg.from_user.id)
-    helper = Helper(client, msg)
-    user = db.get_data_pelanggan()   
-    if msg.text or msg.photo or msg.video or msg.voice:
-        menfess = user.menfess
-        all_menfess = user.all_menfess
-        coin = user.coin
-        if menfess >= config.batas_kirim:
-            if user.status == 'member' or user.status == 'talent':
-                if coin >= config.biaya_kirim:
-                    coin = user.coin - config.biaya_kirim   
-                else:
-                    return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\n<b>Kamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. <b>Topup Coin silahkan klik</b> /topup ', True, enums.ParseMode.HTML)
-
-        if key == hastag[0]:
-            picture = config.pic_girl
-        elif key == hastag[1]:
-            picture = config.pic_boy
-
-        link = await get_link()       
-        caption = msg.text or msg.caption
-        entities = msg.entities or msg.caption_entities
-
-        kirim = await client.send_photo(config.channel_1, picture, caption, caption_entities=entities)
-        await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
-        await db.update_menfess(coin, menfess, all_menfess)
-        await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
-    else:
-        await msg.reply('media yang didukung photo, video dan voice')
-
-
 async def send_menfess_handler(client: Client, msg: types.Message, link: str = None):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
@@ -64,10 +32,6 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
         link = await get_link()
-    # Check if the sender has a username
-    if msg.from_user.username is None:       
-        return await msg.reply('⚠️ pesan gagal terkirim, anda harus memakai username untuk dapat mengirim menfess.', quote=True)
-
         # Use regular expression to check for links in the message
         if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
             return await msg.reply(f"Tidak diizinkan mengirimkan tautan.", quote=True)
