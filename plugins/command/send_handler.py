@@ -5,7 +5,7 @@ from pyrogram import Client, types, enums
 from plugins import Database, Helper
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-async def send_with_pic_handler(self, client: Client, msg: types.Message, key: str, hastag: list):
+async def send_with_pic_handler(client: Client, msg: types.Message, key: str, hastag: list):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()   
@@ -51,7 +51,7 @@ async def send_with_pic_handler(self, client: Client, msg: types.Message, key: s
     else:
         await msg.reply('media yang didukung photo, video dan voice')
 
-async def send_menfess_handler(self, client: Client, msg: types.Message, link: str = None):
+async def send_menfess_handler(client: Client, msg: types.Message, link: str = None):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
