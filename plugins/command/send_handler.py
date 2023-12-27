@@ -84,7 +84,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
 
         # Use regular expression to check for links in the message
         if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
-            return await msg.reply("Tidak diizinkan mengirimkan tautan.", quote=True)
+            return await msg.reply(f"Tidak diizinkan mengirimkan tautan.", True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
 
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
