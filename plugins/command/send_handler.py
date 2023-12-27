@@ -63,24 +63,6 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
         link = await get_link()
-        # Check if the message mentions the sender's username
-        username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
-
-        # Check if the message contains mentions of other usernames
-        if msg.entities:
-            for entity in msg.entities:
-                if entity.type == "mention":
-                    mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
-                    # If the mentioned username is not the sender's username, reject the message
-                    if mentioned_username != username:
-                        return await msg.reply(f"Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.",       
-       quote=True
-),  
-
-        # Use regular expression to check for links in the message
-        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
-            return await msg.reply("Tidak diizinkan mengirimkan tautan.", quote=True)
-
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
 
         buttons = [
@@ -93,28 +75,16 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                     "🗑ʜᴀᴘᴜs",
                     callback_data="hps")
             ],
-        ],
-
-        keyboard = [
-            [
-                InlineKeyboardButton(
-                    f"👀ʟɪʜᴀᴛ",
-              url="https://t.me/JAWAFES/28266",
-                ),                
-        ],
-],
+        ]
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi",       
 
        disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
- ),    
+ ),
     else:
-        await msg.reply("Tidak diizinkan mengirimkan tautan.",
-       disable_web_page_preview=True,        reply_markup=reply_markup,
- quote=True)
-
+        await msg.reply('media yang didukung photo, video dan voice')
 
 async def get_link():
     anu = str(config.channel_1).split('-100')[1]
