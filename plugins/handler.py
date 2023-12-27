@@ -14,6 +14,7 @@ async def on_message(client: Client, msg: Message):
         if msg.from_user is None:
             return
 
+        else:
             uid = msg.from_user.id
         helper = Helper(client, msg)
         database = Database(uid)
@@ -38,8 +39,8 @@ async def on_message(client: Client, msg: Message):
 
         # anu = msg.caption if not msg.text else msg.text
         # print(f"-> {anu}")
-              
-        command = msg.text or msg.caption   
+
+        command = msg.text or msg.caption
         if command is None:
             await gagal_kirim_handler(client, msg)
 
@@ -151,7 +152,7 @@ async def on_message(client: Client, msg: Message):
                 hastag = config.hastag.split('|')
                 member = database.get_data_pelanggan()
                 if member.status == 'banned':
-                    return await msg.reply(f'⛔️Akun anda tidak dapat mengirim menfess karena telah di banned oleh <b>Admin</b>\nJika anda merasa itu sebuah kesalahan, silahkan hubungi @vxnjul.', True, enums.ParseMode.HTML, reply_markup=markup)
+                    return await msg.reply(f'⛔️Akun anda tidak dapat mengirim menfess karena telah di banned oleh <b>Admin</b>\nJika anda merasa itu sebuah kesalahan, silahkan hubungi @vxnjul.', True, enums.ParseMode.HTML)
                 if key in [hastag[0], hastag [1]]:
                     return (
                         await msg.reply(
@@ -167,16 +168,14 @@ async def on_message(client: Client, msg: Message):
                     )
                 elif key in hastag:
                     if key == command.lower() or len(command.split(' ')) < 3:
-                        return await msg.reply('🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>', True, enums.ParseMode.HTML, reply_markup=matkup)
+                        return await msg.reply('🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>', True, enums.ParseMode.HTML)
                     else:
                         return await send_menfess_handler(client, msg)
                 else:
                     await gagal_kirim_handler(client, msg)
             else:
                 await gagal_kirim_handler(client, msg)
-   
-        
-      elif msg.chat.type == enums.ChatType.SUPERGROUP:
+    elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
         if msg.from_user is None:
             if msg.sender_chat.id != config.channel_1:
@@ -212,8 +211,6 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await cb_hapus(client, query)
     elif query.data == 'nsj':
         await cb_help(client, query)
-    elif query.data == 'ttp':
-        await cb_close(client, query)
     elif query.data == 'voice':
         await voice_handler_inline(client, query)
     elif query.data == 'status_bot':
