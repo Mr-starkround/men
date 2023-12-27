@@ -31,8 +31,8 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                 else:
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
-    elif msg.text or msg.photo or msg.video or msg.voice:
         link = await get_link()
+    if msg.text or msg.photo or msg.video or msg.voice:
         # Use regular expression to check for links in the message
         if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
             return await msg.reply(f"Tidak diizinkan mengirimkan tautan.", quote=True)
