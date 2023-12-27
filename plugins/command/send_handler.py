@@ -68,14 +68,6 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                 return await msg.reply('Tidak bisa mengirim voice, karena sedang dinonaktifkan oleh admin', True)
 
         menfess = db_user.menfess
-        all_menfess = db_user.all_menfess
-        coin = db_user.coin
-        if menfess >= config.batas_kirim:
-            if db_user.status == 'member' or db_user.status == 'talent':
-                if coin >= config.biaya_kirim:
-                    coin = db_user.coin - config.biaya_kirim
-                else:
-
 buttons = [
         [                       
             InlineKeyboardButton(
@@ -91,6 +83,14 @@ InlineKeyboardButton(
   ],
 
   ]
+        all_menfess = db_user.all_menfess
+        coin = db_user.coin
+        if menfess >= config.batas_kirim:
+            if db_user.status == 'member' or db_user.status == 'talent':
+                if coin >= config.biaya_kirim:
+                    coin = db_user.coin - config.biaya_kirim
+                else:
+
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
         link = await get_link()  
