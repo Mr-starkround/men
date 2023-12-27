@@ -83,8 +83,8 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
         return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', quote=True)
 
     # Check if the message mentions the sender's username
-    username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
-    if not username and username in msg.text.lower():
+        self.username = "-" if not self.message.from_user.username else '@' + self.message.from_user.username    
+    if no self.username in msg.text.lower():
         return await msg.reply('⚠️ pesan gagal terkirim, anda menggunakan username orang lain, untuk mencegah fake promote silahkan gunakan username anda sendiri atau buat pesan promote tanpa username = (menfess)', quote=True)
 
         # Use regular expression to check for links in the message
