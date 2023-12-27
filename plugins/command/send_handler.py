@@ -42,9 +42,8 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
    markup = [
-        [InlineKeyboardButton(                "ᴄᴀʀᴀ ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", callback_data="tpp")],
-    ],
-   
+          [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url='https://t.me/Jawafessbot?start=start')]
+        ])
  
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
