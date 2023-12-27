@@ -41,6 +41,12 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
+   keyboard = [
+        [InlineKeyboardButton(                "ᴄᴀʀᴀ ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", callback_data="tpp")],
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)   
+
+
  
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
@@ -63,15 +69,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
                 else:
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
-        link = await get_link()
-
-
-      keyboard = [
-        [InlineKeyboardButton(                "ᴄᴀʀᴀ ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", callback_data="tpp")],
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)        
-
-
+        link = await get_link()     
     # Check if the sender has a username
     if msg.from_user.username is None:
         return await msg.reply(f"Anda harus memiliki username untuk mengirim menfess.", True, enums.ParseMode.HTML,reply_markup=reply_markup)
