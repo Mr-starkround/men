@@ -38,7 +38,22 @@ async def on_message(client: Client, msg: Message):
 
         # anu = msg.caption if not msg.text else msg.text
         # print(f"-> {anu}")
-               
+ 
+    buttons = [
+        [                       
+            InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),
+InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/28266"
+            ),
+        ],
+  [            InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="tutup"
+            ),    
+  ],
+
+  ]              
         command = msg.text or msg.caption
         if command is None:
             await gagal_kirim_handler(client, msg)
