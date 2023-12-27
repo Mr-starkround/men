@@ -41,23 +41,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
-
-        # Check if the message mentions the sender's username
-        username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
-
-        # Check if the message contains mentions of other usernames
-        if msg.entities:
-            for entity in msg.entities:
-                if entity.type == "mention":
-                    mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
-                    # If the mentioned username is not the sender's username, reject the message
-                    if mentioned_username != username:
-                        return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
-
-        # Use regular expression to check for links in the message
-        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
-            return await msg.reply("Tidak diizinkan mengirimkan tautan.", quote=True)
-
+ 
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
@@ -81,6 +65,22 @@ async def send_menfess_handler(client: Client, msg: types.Message, link: str = N
 
         link = await get_link()
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
+       # Check if the message mentions the sender's username
+        username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+
+        # Check if the message contains mentions of other usernames
+        if msg.entities:
+            for entity in msg.entities:
+                if entity.type == "mention":
+                    mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
+                    # If the mentioned username is not the sender's username, reject the message
+                    if mentioned_username != username:
+                        return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
+
+        # Use regular expression to check for links in the message
+        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
+            return await msg.reply("Tidak diizinkan mengirimkan tautan.", quote=True)
+
 
         buttons = [
             [
