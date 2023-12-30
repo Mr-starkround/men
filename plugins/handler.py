@@ -149,7 +149,7 @@ async def on_message(client: Client, msg: Message):
 
             if x := re.search(fr"(?:^|\s)({config.hastag})", command.lower()):
                 key = x[1]
-                hastag = config.hastag.split('|')
+                hastag = config.hastag.split(',')
                 member = database.get_data_pelanggan()
                 if member.status == 'banned':
                     return await msg.reply(f'⛔️Akun anda tidak dapat mengirim menfess karena telah di banned oleh <b>Admin</b>\nJika anda merasa itu sebuah kesalahan, silahkan hubungi @vxnjul.', True, enums.ParseMode.HTML)
@@ -167,7 +167,7 @@ async def on_message(client: Client, msg: Message):
                         )
                     )
                 elif key in hastag:
-                    if key == command.lower() or len(command.split(' ')) < 3:
+                    if key == command.lower() or len(command.split(',')) < 3:
                         return await msg.reply('🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>', True, enums.ParseMode.HTML)
                     else:
                         return await send_menfess_handler(client, msg)
@@ -182,7 +182,7 @@ async def on_message(client: Client, msg: Message):
                 return
 
             if x := re.search(fr"(?:^|\s)({config.hastag})", command.lower()):
-                hastag = config.hastag.split('|')
+                hastag = config.hastag.split(',')
                 if x[1] in [hastag[0], hastag[1]]:
                     try:
                         await client.delete_messages(msg.chat.id, msg.id)
