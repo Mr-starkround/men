@@ -148,4 +148,4 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
                     parse_mode=enums.ParseMode.HTML
                 )
         else:
-            return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True)
+            return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True) 
