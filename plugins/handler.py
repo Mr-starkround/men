@@ -221,4 +221,4 @@ async def on_callback_query(client: Client, query: CallbackQuery):
     elif query.data == 'ya_confirm':
         await broadcast_ya(client, query)
     elif query.data == 'tutup':
-        await close_cbb(client, query)
+        await close_cbb(client, query) 
